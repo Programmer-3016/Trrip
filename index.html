@@ -95,84 +95,50 @@
       </button>
     </aside>
 
-    <!-- TOP GLOBAL HEADER (Responsive: Mobile Row/Search + Desktop Full Navbar) -->
-    <header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-xs transition-all">
-      <div class="w-full max-w-6xl mx-auto px-4 py-2.5 lg:py-3.5 lg:flex lg:items-center lg:justify-between lg:gap-6">
-        
-        <!-- Desktop Brand & Logo -->
-        <div class="flex items-center justify-between w-full lg:w-auto">
-          <div class="flex items-center gap-3">
-            <button onclick="showDiscovery()" class="flex items-center gap-2 group text-left">
-              <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white shadow-xs group-hover:scale-105 transition-transform">
-                <span class="material-symbols-outlined text-[20px]">explore</span>
-              </span>
-              <div>
-                <span class="font-display text-lg font-extrabold tracking-tight text-on-surface block leading-tight">Trrip</span>
-                <span class="text-[9px] font-bold text-primary tracking-wider uppercase hidden sm:block">Traveller App</span>
-              </div>
-            </button>
-
-            <!-- Destination Selector -->
-            <div class="flex items-center space-x-1.5 pl-3 border-l border-outline-variant/30 cursor-pointer group">
-              <span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
-              <div>
-                <div class="flex items-center gap-0.5">
-                  <span class="font-display text-xs sm:text-sm font-bold text-on-surface group-hover:text-primary transition-colors">C-Scheme, Jaipur</span>
-                  <span class="material-symbols-outlined text-outline text-[16px] transition-transform group-hover:translate-y-0.5">keyboard_arrow_down</span>
-                </div>
-                <p class="text-[10px] text-outline font-medium hidden sm:block">Near Albert Hall &amp; MI Road</p>
-              </div>
+    <!-- 1. Sleek Integrated Top Header & Search Block (Original layout restored) -->
+    <header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md transition-all duration-200 border-b border-outline-variant/20 shadow-xs">
+      <div class="px-4 pt-3 pb-2.5 space-y-2.5 max-w-md mx-auto lg:max-w-6xl lg:flex lg:items-center lg:gap-6 lg:px-8 lg:py-4 lg:space-y-0">
+        <!-- Desktop brand -->
+        <a href="#" onclick="showDiscovery(); return false;" class="hidden lg:flex lg:order-1 lg:items-center lg:gap-2 lg:shrink-0" aria-label="Trrip home">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-on-primary shadow-sm">
+            <span class="material-symbols-outlined text-[21px]">explore</span>
+          </span>
+          <span class="font-display text-[20px] font-extrabold tracking-tight text-on-surface">Trrip</span>
+        </a>
+        <!-- Top Row: Location & Actions -->
+        <div class="flex justify-between items-center w-full lg:order-3 lg:w-auto lg:shrink-0 lg:gap-5">
+          <!-- Location Selector -->
+          <div class="flex items-center space-x-1 cursor-pointer group">
+            <span class="material-symbols-outlined text-primary text-[20px]" data-icon="location_on">location_on</span>
+            <div class="flex items-center gap-0.5">
+              <span class="font-display text-[15px] font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">C-Scheme, Jaipur</span>
+              <span class="material-symbols-outlined text-outline text-[18px] transition-transform group-hover:translate-y-0.5" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
             </div>
           </div>
-
-          <!-- Mobile Notification & User Avatar -->
-          <div class="flex items-center space-x-2 lg:hidden">
-            <button aria-label="Notifications" class="relative p-1.5 rounded-full hover:bg-surface-container-high text-on-surface-variant">
-              <span class="material-symbols-outlined text-[20px]">notifications</span>
-              <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span>
+          <!-- Notification & Minimal Avatar -->
+          <div class="flex items-center space-x-2">
+            <button aria-label="Notifications" class="relative p-1.5 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant active:scale-95">
+              <span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+              <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span>
             </button>
-            <div class="w-7 h-7 rounded-full overflow-hidden border border-outline-variant/40">
-              <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="User avatar">
-            </div>
+            <button aria-label="User Profile" class="w-7 h-7 rounded-full overflow-hidden border border-outline-variant/40 focus:outline-none active:scale-95 transition-transform">
+              <img class="w-full h-full object-cover" data-alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uL3g47A0q8U2oJBDtwHH5WQkMKD-fo7AawuW8kHwTlfSi2o4RZkcWAwE5925Ouz-C4op8RmUD6YYZryKPRSyPKotjO5CHniA_9tm0MSkYtMN3BoCtNaoXEQRvHEM6zdWQjzTrCa--IeQJk4JqTY2WRN7HQFj9t9kiNCdRPYTz3bnzya9FRt7hA3IvFJVKYyLVaWYqJRNK4Oz-poOIEF1vI35FV3cP--tX_V2zGJUW7g3y36dXhxS">
+            </button>
           </div>
         </div>
-
-        <!-- Integrated Search Bar (Expands centered on Desktop) -->
-        <div class="mt-2.5 lg:mt-0 relative flex items-center w-full lg:max-w-md bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-xs focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10">
+        <!-- Integrated Search Bar -->
+        <div class="relative flex items-center w-full bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-xs focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 lg:order-2 lg:flex-1">
           <div class="pl-3 pr-2 flex items-center pointer-events-none text-outline">
-            <span class="material-symbols-outlined text-[18px]">search</span>
+            <span class="material-symbols-outlined text-[18px]" data-icon="search">search</span>
           </div>
-          <input id="search-input" class="w-full py-2 pr-8 bg-transparent text-on-surface placeholder:text-outline text-xs font-medium border-0 focus:ring-0 focus:outline-none" placeholder="Search Rajasthani thali, rooftop lounge, cafes..." type="text">
-          <button id="clear-search" aria-label="Clear search" class="hidden absolute right-2.5 p-1 text-outline hover:text-primary transition-colors">
+          <input id="search-input" class="w-full py-2 pr-9 bg-transparent text-on-surface placeholder:text-outline text-xs font-medium border-0 focus:ring-0 focus:outline-none" placeholder="Search restaurants, cuisines, or dishes..." type="text">
+          <button id="clear-search" aria-label="Clear search" class="hidden absolute right-8 p-1 text-outline hover:text-primary transition-colors">
             <span class="material-symbols-outlined text-[16px]">close</span>
           </button>
+          <button aria-label="Adjust filters" class="absolute right-2 p-1 text-outline hover:text-primary transition-colors active:scale-95">
+            <span class="material-symbols-outlined text-[17px]" data-icon="tune">tune</span>
+          </button>
         </div>
-
-        <!-- Desktop Navigation Items & Profile -->
-        <div class="hidden lg:flex lg:items-center lg:gap-6">
-          <nav class="flex items-center gap-1">
-            <button onclick="showDiscovery()" class="px-3 py-1.5 rounded-lg text-xs font-bold text-primary bg-primary/10 transition-colors">
-              Dining
-            </button>
-            <button onclick="showToast('Experiences & activities discovery coming soon')" class="px-3 py-1.5 rounded-lg text-xs font-medium text-outline hover:text-on-surface transition-colors">
-              Activities
-            </button>
-            <button onclick="showToast('Shopping recommendations coming soon')" class="px-3 py-1.5 rounded-lg text-xs font-medium text-outline hover:text-on-surface transition-colors">
-              Shopping
-            </button>
-          </nav>
-          <div class="flex items-center gap-3 pl-3 border-l border-outline-variant/30">
-            <button aria-label="Notifications" class="relative p-1.5 rounded-full hover:bg-surface-container text-on-surface-variant">
-              <span class="material-symbols-outlined text-[20px]">notifications</span>
-              <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span>
-            </button>
-            <div class="flex items-center gap-2 cursor-pointer">
-              <img class="w-8 h-8 rounded-full object-cover border border-outline-variant/40" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="User avatar">
-              <span class="text-xs font-bold text-on-surface hidden xl:inline">Sarth</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </header>
 

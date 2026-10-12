@@ -145,268 +145,251 @@
     <!-- ========================================================================= -->
     <!-- VIEW 1: RESTAURANT DISCOVERY FEED (SCREEN 1)                             -->
     <!-- ========================================================================= -->
-    <div id="view-discovery" class="flex flex-col flex-1 w-full max-w-6xl mx-auto px-4 py-3 lg:py-6">
+    <div id="view-discovery" class="flex flex-col flex-1 w-full max-w-6xl mx-auto space-y-3.5 lg:space-y-6">
 
-      <!-- 1-Tap Quick Filter Chips -->
-      <section aria-label="Quick filters" class="overflow-x-auto no-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0">
-        <div class="flex items-center space-x-2 py-0.5 lg:flex-wrap lg:gap-2 lg:space-x-0">
-          <button data-filter="all" class="filter-chip active flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-primary text-white text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-xs">
-            <span class="material-symbols-outlined text-[15px]">tune</span>
-            <span>All Spots</span>
+      <!-- 2. Quick Filter Chips (Original exact layout) -->
+      <section class="w-full overflow-hidden pt-1">
+        <div class="flex items-center space-x-1.5 px-4 overflow-x-auto no-scrollbar py-0.5 lg:flex-wrap lg:gap-2 lg:space-x-0 lg:px-8 lg:overflow-visible">
+          <!-- Filter: Veg Only -->
+          <button data-filter-chip class="flex items-center space-x-1 px-2.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 hover:border-outline text-on-surface-variant font-display text-xs whitespace-nowrap active:scale-95 transition-all shadow-xs">
+            <span class="material-symbols-outlined text-[15px] text-secondary" data-icon="eco">eco</span>
+            <span>Veg Only</span>
           </button>
-          <button data-filter="veg" class="filter-chip flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant text-xs font-medium whitespace-nowrap active:scale-95 hover:border-primary transition-all">
-            <span class="material-symbols-outlined text-[15px] text-secondary">eco</span>
-            <span>Pure Veg</span>
-          </button>
-          <button data-filter="rooftop" class="filter-chip flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant text-xs font-medium whitespace-nowrap active:scale-95 hover:border-primary transition-all">
-            <span class="material-symbols-outlined text-[15px] text-tertiary">wb_twilight</span>
-            <span>Heritage Rooftop</span>
-          </button>
-          <button data-filter="open" class="filter-chip flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant text-xs font-medium whitespace-nowrap active:scale-95 hover:border-primary transition-all">
-            <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+          <!-- Filter: Open Now (Active Example) -->
+          <button data-filter-chip class="flex items-center space-x-1 px-2.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary font-display text-xs whitespace-nowrap active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[15px] text-primary" data-icon="schedule" data-weight="fill" style="font-variation-settings: 'FILL' 1;">schedule</span>
             <span>Open Now</span>
           </button>
-          <button data-filter="offers" class="filter-chip flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant text-xs font-medium whitespace-nowrap active:scale-95 hover:border-primary transition-all">
-            <span class="material-symbols-outlined text-[15px] text-amber-600">percent</span>
-            <span>10%+ Trrip Deals</span>
+          <!-- Filter: Top Rated -->
+          <button data-filter-chip class="flex items-center space-x-1 px-2.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 hover:border-outline text-on-surface-variant font-display text-xs whitespace-nowrap active:scale-95 transition-all shadow-xs">
+            <span class="material-symbols-outlined text-[15px] text-tertiary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span>Top Rated</span>
+          </button>
+          <!-- Filter: Near Me -->
+          <button data-filter-chip class="flex items-center space-x-1 px-2.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 hover:border-outline text-on-surface-variant font-display text-xs whitespace-nowrap active:scale-95 transition-all shadow-xs">
+            <span class="material-symbols-outlined text-[15px] text-outline" data-icon="near_me">near_me</span>
+            <span>Near Me</span>
+          </button>
+          <!-- Filter: Discounts & Offers -->
+          <button data-filter-chip class="flex items-center space-x-1 px-2.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/40 hover:border-outline text-on-surface-variant font-display text-xs whitespace-nowrap active:scale-95 transition-all shadow-xs">
+            <span class="material-symbols-outlined text-[15px] text-primary" data-icon="sell">sell</span>
+            <span>Discounts &amp; Offers</span>
           </button>
         </div>
       </section>
 
-      <!-- Curated Destination Hero Banner (Desktop: 220px, Mobile: 140px) -->
-      <section aria-label="Curated Experiences" class="mt-3 lg:mt-6">
-        <div class="relative w-full h-[140px] sm:h-[180px] lg:h-[220px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-xs border border-outline-variant/20 bg-inverse-surface group cursor-pointer" onclick="openRestaurant('surya-mahal')">
-          <img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-80 group-hover:scale-105 transition-transform duration-700" src="./assets/jaipur_rooftop_dining.jpg" alt="Jaipur rooftop heritage dining">
-          <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-          <div class="relative z-10 h-full p-4 lg:p-8 flex flex-col justify-between">
+      <!-- 3. Streamlined Sleek Hero Banner (Original exact layout) -->
+      <section class="px-4 lg:px-8">
+        <div class="relative w-full h-[108px] rounded-xl overflow-hidden shadow-xs border border-outline-variant/20 bg-inverse-surface group lg:h-[220px] lg:rounded-2xl cursor-pointer" onclick="openRestaurant('surya-mahal')">
+          <!-- Background Image with Scrim -->
+          <img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 group-hover:scale-105 transition-transform duration-500" data-alt="Stunning heritage rooftop dining terrace in Jaipur at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPCUpQYzkINktojr5JmXZAzJPkWfuB974vP01yzrQRZaS3ve5MYRrMCjBiXQQKsbcBXqGmUwHnABAaBG_S1T27e7Z505zBDS8nkttTZ3n18VcqnBP_5jtc6G3zr9ioHDWYrBEuVxUyXtj-WnVMAhSyB6EBa7rnlZZXwaXVv6B-YiS42I8W42Oucu9KAsed0KzlNYiC2-0Xh-fynQyOLxk05I4iyScQTod3_yJGs4OHiukklTZVpchW">
+          <div class="absolute inset-0 bg-gradient-to-r from-on-background/95 via-on-background/75 to-transparent"></div>
+          <!-- Banner Content -->
+          <div class="relative z-10 h-full p-3 flex flex-col justify-between lg:p-8">
             <div>
-              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-secondary text-white text-[10px] font-bold uppercase tracking-wider">
-                <span class="material-symbols-outlined text-[13px]">auto_awesome</span>
-                Traveller's Choice
+              <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-secondary-container/90 text-on-secondary-fixed text-[9px] font-bold tracking-wide uppercase">
+                Curated for you
               </span>
-              <h2 class="font-display text-base sm:text-xl lg:text-3xl text-white font-extrabold mt-1.5 lg:mt-2.5 leading-snug lg:max-w-xl">
-                Jaipur Heritage Dining &amp; Royal Thalis
+              <h2 class="font-display text-[17px] leading-tight text-surface-container-lowest font-bold mt-1 lg:text-[30px] lg:leading-tight lg:max-w-md">
+                Heritage Rooftops &amp; Cocktails
               </h2>
-              <p class="text-white/80 text-xs sm:text-sm line-clamp-1 mt-0.5 lg:mt-1 max-w-lg">
-                Authentic royal thalis, palatial courtyards &amp; exclusive Trrip member discounts
-              </p>
             </div>
             <div class="flex items-center justify-between">
-              <span class="text-xs sm:text-sm font-bold text-primary-fixed flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                Explore Surya Mahal &amp; Rooftops <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
-              </span>
-              <div class="flex items-center space-x-1.5">
-                <span class="w-4 h-1.5 rounded-full bg-primary-fixed"></span>
-                <span class="w-2 h-1.5 rounded-full bg-white/40"></span>
-                <span class="w-2 h-1.5 rounded-full bg-white/40"></span>
+              <p class="font-sans text-surface-dim font-medium text-[11px] lg:text-[14px]">
+                Up to 20% off with <span class="text-primary-fixed font-semibold">Trrip Dining</span>
+              </p>
+              <!-- Carousel Indicator Dots -->
+              <div class="flex items-center space-x-1">
+                <span class="w-3.5 h-1.5 rounded-full bg-primary-fixed transition-all"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-surface-dim/40"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-surface-dim/40"></span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Restaurant Listings Section (Desktop: Responsive Multi-Column Grid) -->
-      <section aria-label="Trending Dining Spots" class="mt-4 lg:mt-8 space-y-3 lg:space-y-5">
-        <div class="flex items-baseline justify-between">
+      <!-- 4. Restaurant Listing Cards (Horizontal Media-List Layout - Original exact format) -->
+      <section class="px-4 space-y-2.5 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0 lg:px-8 xl:grid-cols-3">
+        <!-- Section Header -->
+        <div class="flex items-baseline justify-between pt-0.5 lg:col-span-2 xl:col-span-3">
           <div>
-            <h3 class="font-display text-base lg:text-2xl font-bold text-on-surface">Trending Spots in Jaipur</h3>
-            <p class="text-xs lg:text-sm text-outline font-medium">Curated for travellers in C-Scheme, MI Road &amp; Bani Park</p>
+            <h3 class="font-display text-[20px] font-bold text-on-surface lg:text-[26px] lg:leading-tight">Trending Dining in Jaipur</h3>
+            <p class="font-sans text-[12px] text-outline">Handpicked places near C-Scheme</p>
           </div>
-          <span class="text-xs lg:text-sm font-bold text-primary">3 Handpicked Places</span>
+          <button class="font-display text-xs font-semibold text-primary hover:underline">See all</button>
         </div>
 
-        <!-- Responsive Card Grid: 1 col on mobile, 2 cols on tablet, 3 cols on desktop -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 lg:gap-6">
-
-          <!-- CARD 1: Surya Mahal Restaurant (Clickable Entire Card) -->
-          <article data-restaurant="surya-mahal" data-tags="veg open offers" class="restaurant-card bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-xs overflow-hidden transition-all duration-200 active:scale-[0.99] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer flex flex-row lg:flex-col p-3 lg:p-4 gap-3 lg:gap-3.5">
-            <!-- Thumbnail Media -->
-            <div class="relative w-[116px] h-[126px] lg:w-full lg:h-48 shrink-0 rounded-xl overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" src="./assets/dal_baati_churma.jpg" alt="Surya Mahal Dal Baati Churma Thali">
-              <!-- Non-destructive offer badge -->
-              <div class="absolute top-2 left-2 bg-surface-container-lowest/95 backdrop-blur-md px-2 py-0.5 rounded-md shadow-xs border border-primary/20 flex items-center space-x-1">
-                <span class="material-symbols-outlined text-[12px] text-primary">percent</span>
-                <span class="text-[10px] font-display font-bold text-primary">10% OFF</span>
+        <!-- Listing Card 1: Surya Mahal Restaurant & Cafe (Horizontal Split Row - Original Format) -->
+        <article data-restaurant="surya-mahal" class="restaurant-card bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-xs overflow-hidden transition-all duration-200 active:scale-[0.99] group cursor-pointer flex p-2.5 gap-2.5 lg:min-h-[184px] lg:p-3 lg:gap-4 lg:hover:-translate-y-0.5 lg:hover:shadow-md xl:min-h-0 xl:flex-col xl:p-3.5">
+          <!-- Left Media Thumbnail -->
+          <div class="relative w-[114px] h-[118px] shrink-0 rounded-lg overflow-hidden bg-surface-container lg:w-[140px] lg:h-[142px] xl:w-full xl:h-44">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Exquisite authentic North Indian and Rajasthani thali feast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALEbenDjzT9J0EIVbCGg8hFzESVBGAMPjMzOkBGy0HdTGy6Y2UvwHKsejdV3LHq_4Yek3MDInauISV69SXmHSnhnHMBrsmUamDjRHHOM0ejnnYoctMpwIMWDmsJBf04Umoy1jmFCcZZvGhWr0In9jLf8UC_XDvVbIr8VfkaTzffO4J_o-8cS3WoE9Wb2_wk8YS4xeqQwhibJdgbU_hjF1abOFfsBgiFt6j_UJtm2GECboUQUEqR_no">
+            <!-- Offer Badge -->
+            <div class="absolute top-1.5 left-1.5 bg-surface-container-lowest/95 backdrop-blur-md px-1.5 py-0.5 rounded shadow-xs border border-outline-variant/20 flex items-center space-x-0.5">
+              <span class="material-symbols-outlined text-[11px] text-primary" data-icon="percent">percent</span>
+              <span class="text-[9px] font-display font-bold text-on-surface">10% OFF with Trrip</span>
+            </div>
+          </div>
+          <!-- Right Content Details -->
+          <div class="flex-1 flex flex-col justify-between min-w-0">
+            <div>
+              <div class="flex items-start justify-between gap-1">
+                <h4 class="font-display text-[14px] font-bold text-on-surface leading-tight truncate lg:text-[16px] xl:whitespace-normal">
+                  Surya Mahal Restaurant &amp; Cafe
+                </h4>
+                <button aria-label="Save Restaurant" onclick="toggleBookmark(event, this)" class="shrink-0 text-outline hover:text-primary transition-colors p-0.5 -mt-0.5 -mr-1">
+                  <span class="material-symbols-outlined text-[18px]" data-icon="bookmark">bookmark</span>
+                </button>
+              </div>
+              <!-- Rating & Review Count -->
+              <div class="flex items-center space-x-1.5 mt-0.5">
+                <div class="bg-secondary px-1.5 py-0.2 rounded flex items-center space-x-0.5 text-white">
+                  <span class="material-symbols-outlined text-[11px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="text-[11px] font-bold leading-none">4.4</span>
+                </div>
+                <span class="text-[11px] font-sans text-outline">(850+)</span>
+                <span class="text-outline text-[10px]">•</span>
+                <span class="font-sans text-outline truncate text-[11px]">₹1,200 for two</span>
+              </div>
+              <div class="flex flex-wrap gap-1 mt-1" aria-label="Cuisine and ambience">
+                <span class="rounded-full bg-surface-container-low px-1.5 py-0.5 text-[9px] font-semibold text-on-surface-variant">North Indian</span>
+                <span class="rounded-full bg-surface-container-low px-1.5 py-0.5 text-[9px] font-semibold text-on-surface-variant">Heritage dining</span>
               </div>
             </div>
-
-            <!-- Content Details -->
-            <div class="flex-1 flex flex-col justify-between min-w-0">
-              <div>
-                <div class="flex items-start justify-between gap-1">
-                  <h4 class="font-display text-[15px] lg:text-base font-bold text-on-surface leading-tight truncate">
-                    Surya Mahal Restaurant &amp; Cafe
-                  </h4>
-                  <button aria-label="Bookmark Surya Mahal" onclick="toggleBookmark(event, this)" class="shrink-0 text-outline hover:text-primary transition-colors p-1">
-                    <span class="material-symbols-outlined text-[18px]">bookmark</span>
-                  </button>
-                </div>
-
-                <!-- Rating, Reviews & Cost -->
-                <div class="flex items-center space-x-1.5 mt-1">
-                  <div class="bg-secondary px-1.5 py-0.5 rounded-md flex items-center space-x-0.5 text-white">
-                    <span class="material-symbols-outlined text-[11px] material-symbols-filled">star</span>
-                    <span class="text-[11px] font-bold leading-none">4.4</span>
-                  </div>
-                  <span class="text-[11px] text-outline font-medium">(850+ reviews)</span>
-                  <span class="text-outline text-[10px]">•</span>
-                  <span class="text-[11px] font-semibold text-on-surface">₹1,200 for two</span>
-                </div>
-
-                <!-- Traveller Tags -->
-                <div class="flex flex-wrap gap-1 mt-1.5">
-                  <span class="rounded-md bg-secondary/10 px-1.5 py-0.5 text-[10px] font-semibold text-secondary">Pure Veg</span>
-                  <span class="rounded-md bg-surface-container px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant">Famous Thali</span>
-                  <span class="rounded-md bg-surface-container px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant">Heritage Vibe</span>
-                </div>
+            <!-- Availability and travel time -->
+            <div class="pt-1.5 border-t border-outline-variant/20 space-y-0.5">
+              <div class="flex items-center text-[11px] font-sans text-on-surface-variant space-x-1 truncate">
+                <span class="material-symbols-outlined text-[13px] text-outline shrink-0" data-icon="near_me">near_me</span>
+                <span class="font-medium text-on-surface">8 min away</span>
               </div>
-
-              <!-- Distance & Action Footer -->
-              <div class="pt-2 border-t border-outline-variant/20 mt-2">
-                <div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-1.5">
-                  <span class="flex items-center gap-1 font-medium">
-                    <span class="material-symbols-outlined text-[14px] text-primary">near_me</span>
-                    0.8 km (4 min auto)
-                  </span>
-                  <span class="text-secondary font-semibold flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Open Now
-                  </span>
-                </div>
-
-                <div class="flex items-center justify-between gap-2">
-                  <span class="text-[11px] font-bold text-primary flex items-center gap-0.5 group-hover:underline">
-                    View Details <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
-                  </span>
-                  <button onclick="handlePrebookClick(event, 'Surya Mahal Restaurant', '10% OFF')" class="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-1.5 text-[11px] font-bold text-white shadow-xs hover:bg-primary-container active:scale-95 transition-all">
-                    Prebook Table
-                  </button>
-                </div>
+              <div class="flex items-center text-[11px] font-sans text-secondary space-x-1 truncate">
+                <span class="material-symbols-outlined text-[13px] shrink-0" data-icon="check_circle">check_circle</span>
+                <span class="font-semibold">Open Now</span>
+                <span class="text-outline">•</span>
+                <span class="text-outline">Closes 11:00 PM</span>
+              </div>
+              <div class="flex items-center justify-between gap-2 pt-1.5">
+                <button data-card-action="details" onclick="openRestaurant('surya-mahal')" class="text-[11px] font-semibold text-primary hover:underline">View details</button>
+                <button data-card-action="book" onclick="handlePrebookClick(event, 'Surya Mahal Restaurant & Cafe', '10% OFF')" class="inline-flex items-center gap-1 rounded-lg bg-primary px-2 py-1 text-[10px] font-bold text-white transition-transform active:scale-95">Book table <span class="material-symbols-outlined text-[13px]">arrow_forward</span></button>
               </div>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- CARD 2: Retreat Bar & Lounge (Clickable Entire Card) -->
-          <article data-restaurant="retreat-bar" data-tags="rooftop open offers" class="restaurant-card bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-xs overflow-hidden transition-all duration-200 active:scale-[0.99] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer flex flex-row lg:flex-col p-3 lg:p-4 gap-3 lg:gap-3.5">
-            <div class="relative w-[116px] h-[126px] lg:w-full lg:h-48 shrink-0 rounded-xl overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" src="./assets/jaipur_rooftop_dining.jpg" alt="Retreat Bar & Lounge">
-              <div class="absolute top-2 left-2 bg-surface-container-lowest/95 backdrop-blur-md px-2 py-0.5 rounded-md shadow-xs border border-primary/20 flex items-center space-x-1">
-                <span class="material-symbols-outlined text-[12px] text-primary">percent</span>
-                <span class="text-[10px] font-display font-bold text-primary">15% OFF</span>
+        <!-- Listing Card 2: The Retreat Bar & Lounge (Horizontal Split Row - Original Format) -->
+        <article data-restaurant="retreat-bar" class="restaurant-card bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-xs overflow-hidden transition-all duration-200 active:scale-[0.99] group cursor-pointer flex p-2.5 gap-2.5 lg:min-h-[184px] lg:p-3 lg:gap-4 lg:hover:-translate-y-0.5 lg:hover:shadow-md xl:min-h-0 xl:flex-col xl:p-3.5">
+          <!-- Left Media Thumbnail -->
+          <div class="relative w-[114px] h-[118px] shrink-0 rounded-lg overflow-hidden bg-surface-container lg:w-[140px] lg:h-[142px] xl:w-full xl:h-44">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Chic modern cocktail lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPtTtbK7mVC7YMBFrTwtJsRR5DnieBOfB8LCSsNbb_1H3PTDXZDqoRblNjc9s6kUNWGHGEA7DkmJjd-1VXaduv5rICAeyUaYFPmofnaNO3J6Jx0zWAgGnL2hpMh1ViK5BHn_Q0EuohoJyxgqkyg10In59rK4UBxnphmJ7rjLY60HR3Idtgf0AztiY5gvDxMUTLAwY8f-NbBhk1N-iEnP7yrYGQ-VfBAMHvRE4gab0SaAB6k0aIp1tC">
+            <!-- Offer Badge -->
+            <div class="absolute top-1.5 left-1.5 bg-surface-container-lowest/95 backdrop-blur-md px-1.5 py-0.5 rounded shadow-xs border border-outline-variant/20 flex items-center space-x-0.5">
+              <span class="material-symbols-outlined text-[11px] text-primary" data-icon="percent">percent</span>
+              <span class="text-[9px] font-display font-bold text-on-surface">15% OFF</span>
+            </div>
+          </div>
+          <!-- Right Content Details -->
+          <div class="flex-1 flex flex-col justify-between min-w-0">
+            <div>
+              <div class="flex items-start justify-between gap-1">
+                <h4 class="font-display text-[14px] font-bold text-on-surface leading-tight truncate lg:text-[16px] xl:whitespace-normal">
+                  The Retreat Bar &amp; Lounge
+                </h4>
+                <button aria-label="Save Restaurant" onclick="toggleBookmark(event, this)" class="shrink-0 text-outline hover:text-primary transition-colors p-0.5 -mt-0.5 -mr-1">
+                  <span class="material-symbols-outlined text-[18px]" data-icon="bookmark">bookmark</span>
+                </button>
+              </div>
+              <!-- Rating & Review Count -->
+              <div class="flex items-center space-x-1.5 mt-0.5">
+                <div class="bg-secondary px-1.5 py-0.2 rounded flex items-center space-x-0.5 text-white">
+                  <span class="material-symbols-outlined text-[11px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="text-[11px] font-bold leading-none">4.2</span>
+                </div>
+                <span class="text-[11px] font-sans text-outline">(1.2k)</span>
+                <span class="text-outline text-[10px]">•</span>
+                <span class="font-sans text-outline truncate text-[11px]">₹1,800 for two</span>
+              </div>
+              <div class="flex flex-wrap gap-1 mt-1" aria-label="Cuisine and ambience">
+                <span class="rounded-full bg-surface-container-low px-1.5 py-0.5 text-[9px] font-semibold text-on-surface-variant">Continental</span>
+                <span class="rounded-full bg-surface-container-low px-1.5 py-0.5 text-[9px] font-semibold text-on-surface-variant">Cocktail bar</span>
               </div>
             </div>
-
-            <div class="flex-1 flex flex-col justify-between min-w-0">
-              <div>
-                <div class="flex items-start justify-between gap-1">
-                  <h4 class="font-display text-[15px] lg:text-base font-bold text-on-surface leading-tight truncate">
-                    The Retreat Bar &amp; Lounge
-                  </h4>
-                  <button aria-label="Bookmark The Retreat" onclick="toggleBookmark(event, this)" class="shrink-0 text-outline hover:text-primary transition-colors p-1">
-                    <span class="material-symbols-outlined text-[18px]">bookmark</span>
-                  </button>
-                </div>
-
-                <div class="flex items-center space-x-1.5 mt-1">
-                  <div class="bg-secondary px-1.5 py-0.5 rounded-md flex items-center space-x-0.5 text-white">
-                    <span class="material-symbols-outlined text-[11px] material-symbols-filled">star</span>
-                    <span class="text-[11px] font-bold leading-none">4.2</span>
-                  </div>
-                  <span class="text-[11px] text-outline font-medium">(1.2k reviews)</span>
-                  <span class="text-outline text-[10px]">•</span>
-                  <span class="text-[11px] font-semibold text-on-surface">₹1,800 for two</span>
-                </div>
-
-                <div class="flex flex-wrap gap-1 mt-1.5">
-                  <span class="rounded-md bg-tertiary/10 px-1.5 py-0.5 text-[10px] font-semibold text-tertiary">Heritage Rooftop</span>
-                  <span class="rounded-md bg-surface-container px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant">Sunset Views</span>
-                  <span class="rounded-md bg-surface-container px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant">Cocktails</span>
-                </div>
+            <!-- Availability and travel time -->
+            <div class="pt-1.5 border-t border-outline-variant/20 space-y-0.5">
+              <div class="flex items-center text-[11px] font-sans text-on-surface-variant space-x-1 truncate">
+                <span class="material-symbols-outlined text-[13px] text-outline shrink-0" data-icon="near_me">near_me</span>
+                <span class="font-medium text-on-surface">12 min away</span>
               </div>
-
-              <div class="pt-2 border-t border-outline-variant/20 mt-2">
-                <div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-1.5">
-                  <span class="flex items-center gap-1 font-medium">
-                    <span class="material-symbols-outlined text-[14px] text-primary">near_me</span>
-                    1.4 km (6 min auto)
-                  </span>
-                  <span class="text-secondary font-semibold flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Open Now
-                  </span>
-                </div>
-
-                <div class="flex items-center justify-between gap-2">
-                  <span class="text-[11px] font-bold text-primary flex items-center gap-0.5 group-hover:underline">
-                    View Details <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
-                  </span>
-                  <button onclick="handlePrebookClick(event, 'The Retreat Bar & Lounge', '15% OFF')" class="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-1.5 text-[11px] font-bold text-white shadow-xs hover:bg-primary-container active:scale-95 transition-all">
-                    Prebook Table
-                  </button>
-                </div>
+              <div class="flex items-center text-[11px] font-sans text-secondary space-x-1 truncate">
+                <span class="material-symbols-outlined text-[13px] shrink-0" data-icon="check_circle">check_circle</span>
+                <span class="font-semibold">Open Now</span>
+                <span class="text-outline">•</span>
+                <span class="text-outline">Closes 1:00 AM</span>
+              </div>
+              <div class="flex items-center justify-between gap-2 pt-1.5">
+                <button data-card-action="details" onclick="openRestaurant('retreat-bar')" class="text-[11px] font-semibold text-primary hover:underline">View details</button>
+                <button data-card-action="book" onclick="handlePrebookClick(event, 'The Retreat Bar & Lounge', '15% OFF')" class="inline-flex items-center gap-1 rounded-lg bg-primary px-2 py-1 text-[10px] font-bold text-white transition-transform active:scale-95">Book table <span class="material-symbols-outlined text-[13px]">arrow_forward</span></button>
               </div>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- CARD 3: The Forresta Kitchen & Bar (Clickable Entire Card) -->
-          <article data-restaurant="forresta" data-tags="open offers" class="restaurant-card bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-xs overflow-hidden transition-all duration-200 active:scale-[0.99] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer flex flex-row lg:flex-col p-3 lg:p-4 gap-3 lg:gap-3.5">
-            <div class="relative w-[116px] h-[126px] lg:w-full lg:h-48 shrink-0 rounded-xl overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="The Forresta Kitchen & Bar">
-              <div class="absolute top-2 left-2 bg-surface-container-lowest/95 backdrop-blur-md px-2 py-0.5 rounded-md shadow-xs border border-primary/20 flex items-center space-x-1">
-                <span class="material-symbols-outlined text-[12px] text-primary">percent</span>
-                <span class="text-[10px] font-display font-bold text-primary">20% OFF</span>
+        <!-- Listing Card 3: The Forresta Kitchen & Bar (Horizontal Split Row - Original Format) -->
+        <article data-restaurant="forresta" class="restaurant-card bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-xs overflow-hidden transition-all duration-200 active:scale-[0.99] group cursor-pointer flex p-2.5 gap-2.5 lg:min-h-[184px] lg:p-3 lg:gap-4 lg:hover:-translate-y-0.5 lg:hover:shadow-md xl:min-h-0 xl:flex-col xl:p-3.5">
+          <!-- Left Media Thumbnail -->
+          <div class="relative w-[114px] h-[118px] shrink-0 rounded-lg overflow-hidden bg-surface-container lg:w-[140px] lg:h-[142px] xl:w-full xl:h-44">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Lush open-air garden cafe and restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSRXVHrOuwXUZSAuQU9gNP0FQfO5U9Wr3sg5KEWoT5ueM4-5DTMg7oHGkxGu_sj721G3K8Zp9imF781XgG5mTkc9i2JsMEHv3C0azajSv1iY45agzwDyWZnSf88vkONARHRZ77bwMa5CEXeBz96ZFZFgV8UbHpfBiCgk4yCewR59kAC16UEdiGAWJ3bg0Fi87znv6fnvYGhaLomt6sLqg-Xpbjqv__CY23fzwJBXKH-39Sgyoo8PeK">
+            <!-- Offer Badge -->
+            <div class="absolute top-1.5 left-1.5 bg-surface-container-lowest/95 backdrop-blur-md px-1.5 py-0.5 rounded shadow-xs border border-outline-variant/20 flex items-center space-x-0.5">
+              <span class="material-symbols-outlined text-[11px] text-primary" data-icon="percent">percent</span>
+              <span class="text-[9px] font-display font-bold text-on-surface">Flat 20% OFF</span>
+            </div>
+          </div>
+          <!-- Right Content Details -->
+          <div class="flex-1 flex flex-col justify-between min-w-0">
+            <div>
+              <div class="flex items-start justify-between gap-1">
+                <h4 class="font-display text-[14px] font-bold text-on-surface leading-tight truncate lg:text-[16px] xl:whitespace-normal">
+                  The Forresta Kitchen &amp; Bar
+                </h4>
+                <button aria-label="Save Restaurant" onclick="toggleBookmark(event, this)" class="shrink-0 text-outline hover:text-primary transition-colors p-0.5 -mt-0.5 -mr-1">
+                  <span class="material-symbols-outlined text-[18px]" data-icon="bookmark">bookmark</span>
+                </button>
+              </div>
+              <!-- Rating & Review Count -->
+              <div class="flex items-center space-x-1.5 mt-0.5">
+                <div class="bg-secondary px-1.5 py-0.2 rounded flex items-center space-x-0.5 text-white">
+                  <span class="material-symbols-outlined text-[11px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="text-[11px] font-bold leading-none">4.5</span>
+                </div>
+                <span class="text-[11px] font-sans text-outline">(2.4k)</span>
+                <span class="text-outline text-[10px]">•</span>
+                <span class="font-sans text-outline truncate text-[11px]">₹1,600 for two</span>
+              </div>
+              <div class="flex flex-wrap gap-1 mt-1" aria-label="Cuisine and ambience">
+                <span class="rounded-full bg-surface-container-low px-1.5 py-0.5 text-[9px] font-semibold text-on-surface-variant">Multi-cuisine</span>
+                <span class="rounded-full bg-surface-container-low px-1.5 py-0.5 text-[9px] font-semibold text-on-surface-variant">Garden ambience</span>
               </div>
             </div>
-
-            <div class="flex-1 flex flex-col justify-between min-w-0">
-              <div>
-                <div class="flex items-start justify-between gap-1">
-                  <h4 class="font-display text-[15px] lg:text-base font-bold text-on-surface leading-tight truncate">
-                    The Forresta Kitchen &amp; Bar
-                  </h4>
-                  <button aria-label="Bookmark The Forresta" onclick="toggleBookmark(event, this)" class="shrink-0 text-outline hover:text-primary transition-colors p-1">
-                    <span class="material-symbols-outlined text-[18px]">bookmark</span>
-                  </button>
-                </div>
-
-                <div class="flex items-center space-x-1.5 mt-1">
-                  <div class="bg-secondary px-1.5 py-0.5 rounded-md flex items-center space-x-0.5 text-white">
-                    <span class="material-symbols-outlined text-[11px] material-symbols-filled">star</span>
-                    <span class="text-[11px] font-bold leading-none">4.5</span>
-                  </div>
-                  <span class="text-[11px] text-outline font-medium">(2.4k reviews)</span>
-                  <span class="text-outline text-[10px]">•</span>
-                  <span class="text-[11px] font-semibold text-on-surface">₹1,600 for two</span>
-                </div>
-
-                <div class="flex flex-wrap gap-1 mt-1.5">
-                  <span class="rounded-md bg-surface-container px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant">Garden Ambience</span>
-                  <span class="rounded-md bg-surface-container px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant">Multi-Cuisine</span>
-                  <span class="rounded-md bg-surface-container px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant">Live Music</span>
-                </div>
+            <!-- Availability and travel time -->
+            <div class="pt-1.5 border-t border-outline-variant/20 space-y-0.5">
+              <div class="flex items-center text-[11px] font-sans text-on-surface-variant space-x-1 truncate">
+                <span class="material-symbols-outlined text-[13px] text-outline shrink-0" data-icon="near_me">near_me</span>
+                <span class="font-medium text-on-surface">15 min away</span>
               </div>
-
-              <div class="pt-2 border-t border-outline-variant/20 mt-2">
-                <div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-1.5">
-                  <span class="flex items-center gap-1 font-medium">
-                    <span class="material-symbols-outlined text-[14px] text-primary">near_me</span>
-                    1.8 km (8 min auto)
-                  </span>
-                  <span class="text-secondary font-semibold flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Open Now
-                  </span>
-                </div>
-
-                <div class="flex items-center justify-between gap-2">
-                  <span class="text-[11px] font-bold text-primary flex items-center gap-0.5 group-hover:underline">
-                    View Details <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
-                  </span>
-                  <button onclick="handlePrebookClick(event, 'The Forresta Kitchen & Bar', '20% OFF')" class="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-1.5 text-[11px] font-bold text-white shadow-xs hover:bg-primary-container active:scale-95 transition-all">
-                    Prebook Table
-                  </button>
-                </div>
+              <div class="flex items-center text-[11px] font-sans text-secondary space-x-1 truncate">
+                <span class="material-symbols-outlined text-[13px] shrink-0" data-icon="check_circle">check_circle</span>
+                <span class="font-semibold">Open Now</span>
+                <span class="text-outline">•</span>
+                <span class="text-outline">Closes 11:30 PM</span>
+              </div>
+              <div class="flex items-center justify-between gap-2 pt-1.5">
+                <button data-card-action="details" onclick="openRestaurant('forresta')" class="text-[11px] font-semibold text-primary hover:underline">View details</button>
+                <button data-card-action="book" onclick="handlePrebookClick(event, 'The Forresta Kitchen & Bar', 'Flat 20% OFF')" class="inline-flex items-center gap-1 rounded-lg bg-primary px-2 py-1 text-[10px] font-bold text-white transition-transform active:scale-95">Book table <span class="material-symbols-outlined text-[13px]">arrow_forward</span></button>
               </div>
             </div>
-          </article>
-        </div>
+          </div>
+        </article>
       </section>
     </div>
 

@@ -177,30 +177,35 @@
         </div>
       </section>
 
-      <!-- 3. Streamlined Sleek Hero Banner -->
+      <!-- 3. Elevated Curated For You Hero Banner -->
       <section class="px-4 lg:px-8">
-        <div class="relative w-full h-[130px] sm:h-[145px] lg:h-[220px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-card border border-slate-200/80 bg-slate-900 group cursor-pointer" onclick="openRestaurant('surya-mahal')">
-          <!-- Background Image with Ambient Scrim -->
-          <img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-80 group-hover:scale-105 transition-transform duration-700" alt="Stunning heritage rooftop dining terrace in Jaipur at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPCUpQYzkINktojr5JmXZAzJPkWfuB974vP01yzrQRZaS3ve5MYRrMCjBiXQQKsbcBXqGmUwHnABAaBG_S1T27e7Z505zBDS8nkttTZ3n18VcqnBP_5jtc6G3zr9ioHDWYrBEuVxUyXtj-WnVMAhSyB6EBa7rnlZZXwaXVv6B-YiS42I8W42Oucu9KAsed0KzlNYiC2-0Xh-fynQyOLxk05I4iyScQTod3_yJGs4OHiukklTZVpchW">
-          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-transparent"></div>
+        <div class="relative w-full h-[160px] sm:h-[180px] lg:h-[235px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-card border border-slate-200/80 bg-slate-950 group cursor-pointer" onclick="openRestaurant('surya-mahal')">
+          <!-- Background Image without muddy blending -->
+          <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" alt="Stunning heritage rooftop dining terrace in Jaipur at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPCUpQYzkINktojr5JmXZAzJPkWfuB974vP01yzrQRZaS3ve5MYRrMCjBiXQQKsbcBXqGmUwHnABAaBG_S1T27e7Z505zBDS8nkttTZ3n18VcqnBP_5jtc6G3zr9ioHDWYrBEuVxUyXtj-WnVMAhSyB6EBa7rnlZZXwaXVv6B-YiS42I8W42Oucu9KAsed0KzlNYiC2-0Xh-fynQyOLxk05I4iyScQTod3_yJGs4OHiukklTZVpchW">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/45 to-black/15"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-transparent to-transparent"></div>
           
           <!-- Banner Content -->
-          <div class="relative z-10 h-full p-4 lg:p-8 flex flex-col justify-between">
+          <div class="relative z-10 h-full p-4 sm:p-5 lg:p-8 flex flex-col justify-between">
             <div>
-              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] lg:text-[11px] font-headline font-bold tracking-wider uppercase backdrop-blur-xs">
-                <span class="material-symbols-outlined text-[12px]">auto_awesome</span>
-                <span>Curated for you</span>
-              </span>
-              <h2 class="font-headline text-[18px] lg:text-[28px] leading-tight text-white font-extrabold mt-1 lg:mt-2 lg:max-w-md">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-xs">
+                <span class="material-symbols-outlined text-[13px] text-amber-300" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-white">Curated for you</span>
+              </div>
+              <h2 class="text-[19px] sm:text-[22px] lg:text-[28px] leading-tight text-white font-extrabold mt-2 lg:max-w-md drop-shadow-sm">
                 Heritage Rooftops &amp; Cocktails
               </h2>
             </div>
-            <div class="flex items-center justify-between">
-              <p class="text-slate-300 font-medium text-xs lg:text-sm">
-                Up to 20% off with <span class="text-teal-300 font-bold">Trrip Dining</span>
-              </p>
+            
+            <div class="flex items-center justify-between pt-1">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/40 backdrop-blur-md border border-white/15">
+                <span class="material-symbols-outlined text-[13px] text-teal-300">sell</span>
+                <p class="text-white/95 font-medium text-xs">
+                  Up to 20% off with <span class="text-teal-300 font-bold">Trrip Dining</span>
+                </p>
+              </div>
               <!-- Carousel Indicator Dots -->
-              <div class="flex items-center space-x-1.5">
+              <div class="flex items-center space-x-1.5 bg-black/30 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
                 <span class="w-4 h-1.5 rounded-full bg-teal-400 transition-all"></span>
                 <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
                 <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
@@ -212,10 +217,10 @@
 
       <!-- 4. Restaurant Listing Cards (Preserving exact info format with elevated styling) -->
       <section class="px-4 space-y-3.5 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0 lg:px-8 xl:grid-cols-3">
-        <!-- Section Header -->
-        <div class="flex items-baseline justify-between pt-1 lg:col-span-2 xl:col-span-3">
+        <!-- Section Header with Natural Clean Typography -->
+        <div class="flex items-baseline justify-between pt-1.5 lg:col-span-2 xl:col-span-3">
           <div>
-            <h3 class="font-headline text-lg sm:text-xl font-bold text-slate-900 lg:text-2xl lg:leading-tight">Trending Dining in Jaipur</h3>
+            <h3 class="text-[17px] sm:text-[19px] lg:text-[22px] font-bold text-slate-900 tracking-tight leading-snug">Trending Dining in Jaipur</h3>
             <p class="text-xs text-slate-500 mt-0.5">Handpicked places near C-Scheme</p>
           </div>
           <button onclick="feedback('Showing all restaurants in Jaipur')" class="text-xs font-bold text-primary hover:underline">See all</button>

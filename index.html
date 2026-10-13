@@ -177,38 +177,79 @@
         </div>
       </section>
 
-      <!-- 3. Elevated Curated For You Hero Banner -->
-      <section class="px-4 lg:px-8">
-        <div class="relative w-full h-[160px] sm:h-[180px] lg:h-[235px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-card border border-slate-200/80 bg-slate-950 group cursor-pointer" onclick="openRestaurant('surya-mahal')">
-          <!-- Background Image without muddy blending -->
-          <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" alt="Stunning heritage rooftop dining terrace in Jaipur at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPCUpQYzkINktojr5JmXZAzJPkWfuB974vP01yzrQRZaS3ve5MYRrMCjBiXQQKsbcBXqGmUwHnABAaBG_S1T27e7Z505zBDS8nkttTZ3n18VcqnBP_5jtc6G3zr9ioHDWYrBEuVxUyXtj-WnVMAhSyB6EBa7rnlZZXwaXVv6B-YiS42I8W42Oucu9KAsed0KzlNYiC2-0Xh-fynQyOLxk05I4iyScQTod3_yJGs4OHiukklTZVpchW">
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/45 to-black/15"></div>
-          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-transparent to-transparent"></div>
+      <!-- 3. Dynamic Curated For You Hero Banner with Visible Options & Auto-Rotation -->
+      <section class="px-4 lg:px-8 space-y-2">
+        <!-- Curated Header with Visible Options ("options dhike") -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px] text-amber-500" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+              <span class="text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">Curated for you</span>
+            </div>
+            <span id="curated-mobile-counter" class="text-[11px] font-semibold text-slate-400 sm:hidden">1 of 3</span>
+          </div>
+
+          <!-- Visible Option Selector Pills ("options dhike") -->
+          <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" id="curated-tabs-container" role="tablist" aria-label="Curated dining options">
+            <button onclick="setCuratedSlide(0, event)" id="curated-tab-0" role="tab" aria-selected="true" class="curated-tab px-2.5 py-1 rounded-full text-[11px] font-bold transition-all duration-200 flex items-center gap-1 bg-teal-700 text-white shadow-xs ring-2 ring-teal-700/20 active:scale-95">
+              <span>🍸</span>
+              <span>Heritage Rooftops</span>
+            </button>
+            <button onclick="setCuratedSlide(1, event)" id="curated-tab-1" role="tab" aria-selected="false" class="curated-tab px-2.5 py-1 rounded-full text-[11px] font-medium transition-all duration-200 flex items-center gap-1 bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-95">
+              <span>👑</span>
+              <span>Royal Thalis</span>
+            </button>
+            <button onclick="setCuratedSlide(2, event)" id="curated-tab-2" role="tab" aria-selected="false" class="curated-tab px-2.5 py-1 rounded-full text-[11px] font-medium transition-all duration-200 flex items-center gap-1 bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-95">
+              <span>🌿</span>
+              <span>Garden Dining</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Rotating Hero Banner Card ("images badlti rahe") -->
+        <div id="curated-banner-card" class="relative w-full h-[165px] sm:h-[185px] lg:h-[235px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-card border border-slate-200/80 bg-slate-950 group cursor-pointer" onclick="handleCuratedCardClick()">
+          <!-- Dual Layer Cross-Fading Background Images -->
+          <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <img id="curated-img-front" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-opacity duration-700 ease-in-out opacity-100" alt="Heritage Rooftops &amp; Cocktails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPCUpQYzkINktojr5JmXZAzJPkWfuB974vP01yzrQRZaS3ve5MYRrMCjBiXQQKsbcBXqGmUwHnABAaBG_S1T27e7Z505zBDS8nkttTZ3n18VcqnBP_5jtc6G3zr9ioHDWYrBEuVxUyXtj-WnVMAhSyB6EBa7rnlZZXwaXVv6B-YiS42I8W42Oucu9KAsed0KzlNYiC2-0Xh-fynQyOLxk05I4iyScQTod3_yJGs4OHiukklTZVpchW">
+            <img id="curated-img-back" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-opacity duration-700 ease-in-out opacity-0" alt="Royal Dining" src="./assets/dal_baati_churma.jpg">
+          </div>
+          
+          <!-- Cinematic Gradients -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/45 to-black/20 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-transparent to-transparent pointer-events-none"></div>
+
+          <!-- Prev / Next Navigation Arrows -->
+          <button onclick="prevCuratedSlide(event)" aria-label="Previous curated option" class="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 hover:opacity-100 active:scale-90">
+            <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+          </button>
+          <button onclick="nextCuratedSlide(event)" aria-label="Next curated option" class="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all opacity-80 hover:opacity-100 active:scale-90">
+            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+          </button>
           
           <!-- Banner Content -->
-          <div class="relative z-10 h-full p-4 sm:p-5 lg:p-8 flex flex-col justify-between">
-            <div>
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-xs">
-                <span class="material-symbols-outlined text-[13px] text-amber-300" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
-                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-white">Curated for you</span>
+          <div class="relative z-10 h-full p-4 sm:p-5 lg:p-8 flex flex-col justify-between pointer-events-none">
+            <div id="curated-banner-text" class="transition-all duration-300 ease-out pl-6 sm:pl-7 pr-6 sm:pr-7">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-xs">
+                <span class="material-symbols-outlined text-[12px] text-amber-300" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                <span id="curated-banner-tag" class="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-white">Curated for you</span>
               </div>
-              <h2 class="text-[19px] sm:text-[22px] lg:text-[28px] leading-tight text-white font-extrabold mt-2 lg:max-w-md drop-shadow-sm">
+              <h2 id="curated-banner-title" class="text-[19px] sm:text-[22px] lg:text-[28px] leading-tight text-white font-extrabold mt-1.5 lg:max-w-md drop-shadow-sm line-clamp-1 sm:line-clamp-none">
                 Heritage Rooftops &amp; Cocktails
               </h2>
             </div>
             
-            <div class="flex items-center justify-between pt-1">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/40 backdrop-blur-md border border-white/15">
+            <div class="flex items-center justify-between pt-1 pl-6 sm:pl-7 pr-6 sm:pr-7">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md border border-white/15">
                 <span class="material-symbols-outlined text-[13px] text-teal-300">sell</span>
-                <p class="text-white/95 font-medium text-xs">
+                <p id="curated-banner-perk" class="text-white/95 font-medium text-xs">
                   Up to 20% off with <span class="text-teal-300 font-bold">Trrip Dining</span>
                 </p>
               </div>
               <!-- Carousel Indicator Dots -->
-              <div class="flex items-center space-x-1.5 bg-black/30 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
-                <span class="w-4 h-1.5 rounded-full bg-teal-400 transition-all"></span>
-                <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
-                <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+              <div class="flex items-center space-x-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10 pointer-events-auto">
+                <button onclick="setCuratedSlide(0, event)" id="curated-dot-0" aria-label="Slide 1" class="w-4 h-1.5 rounded-full bg-teal-300 transition-all duration-300"></button>
+                <button onclick="setCuratedSlide(1, event)" id="curated-dot-1" aria-label="Slide 2" class="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300"></button>
+                <button onclick="setCuratedSlide(2, event)" id="curated-dot-2" aria-label="Slide 3" class="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300"></button>
               </div>
             </div>
           </div>
@@ -1325,6 +1366,194 @@
       document.getElementById('top-bar-city').textContent = loc;
       feedback('Dining location set to: ' + loc);
     }
+
+    // =========================================================================
+    // DYNAMIC CURATED FOR YOU CAROUSEL & OPTIONS CONTROLLER
+    // =========================================================================
+    const curatedSlides = [
+      {
+        id: 'retreat-bar',
+        tabName: 'Heritage Rooftops',
+        tabIcon: '🍸',
+        tag: 'Curated for you',
+        title: 'Heritage Rooftops & Cocktails',
+        perk: 'Up to 20% off with <span class="text-teal-300 font-bold">Trrip Dining</span>',
+        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCPCUpQYzkINktojr5JmXZAzJPkWfuB974vP01yzrQRZaS3ve5MYRrMCjBiXQQKsbcBXqGmUwHnABAaBG_S1T27e7Z505zBDS8nkttTZ3n18VcqnBP_5jtc6G3zr9ioHDWYrBEuVxUyXtj-WnVMAhSyB6EBa7rnlZZXwaXVv6B-YiS42I8W42Oucu9KAsed0KzlNYiC2-0Xh-fynQyOLxk05I4iyScQTod3_yJGs4OHiukklTZVpchW',
+        alt: 'Scenic Heritage Rooftops & Cocktails in Jaipur'
+      },
+      {
+        id: 'surya-mahal',
+        tabName: 'Royal Thalis',
+        tabIcon: '👑',
+        tag: 'Authentic Heritage',
+        title: 'Authentic Royal Thalis & Sweets',
+        perk: '10% OFF + <span class="text-teal-300 font-bold">Free Kesari Thandai</span>',
+        img: './assets/dal_baati_churma.jpg',
+        alt: 'Authentic Royal Thalis and Rajasthani Feast'
+      },
+      {
+        id: 'forresta',
+        tabName: 'Garden Dining',
+        tabIcon: '🌿',
+        tag: 'Garden & Lounge',
+        title: 'Open-Air Garden Dining & Live Music',
+        perk: 'Flat 20% OFF with <span class="text-teal-300 font-bold">Trrip Dining</span>',
+        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSRXVHrOuwXUZSAuQU9gNP0FQfO5U9Wr3sg5KEWoT5ueM4-5DTMg7oHGkxGu_sj721G3K8Zp9imF781XgG5mTkc9i2JsMEHv3C0azajSv1iY45agzwDyWZnSf88vkONARHRZ77bwMa5CEXeBz96ZFZFgV8UbHpfBiCgk4yCewR59kAC16UEdiGAWJ3bg0Fi87znv6fnvYGhaLomt6sLqg-Xpbjqv__CY23fzwJBXKH-39Sgyoo8PeK',
+        alt: 'Open-Air Garden Dining & Live Music at The Forresta'
+      }
+    ];
+
+    let currentCuratedIndex = 0;
+    let curatedTimer = null;
+    let frontImgActive = true;
+
+    // Preload slides for zero flicker
+    curatedSlides.forEach(slide => {
+      const preloadImg = new Image();
+      preloadImg.src = slide.img;
+    });
+
+    function renderCuratedSlide(index) {
+      const slide = curatedSlides[index];
+      if (!slide) return;
+
+      const frontImg = document.getElementById('curated-img-front');
+      const backImg = document.getElementById('curated-img-back');
+      const textContainer = document.getElementById('curated-banner-text');
+
+      // Crossfade background images
+      if (frontImg && backImg) {
+        if (frontImgActive) {
+          backImg.src = slide.img;
+          backImg.alt = slide.alt;
+          backImg.classList.remove('opacity-0');
+          backImg.classList.add('opacity-100');
+          frontImg.classList.remove('opacity-100');
+          frontImg.classList.add('opacity-0');
+          frontImgActive = false;
+        } else {
+          frontImg.src = slide.img;
+          frontImg.alt = slide.alt;
+          frontImg.classList.remove('opacity-0');
+          frontImg.classList.add('opacity-100');
+          backImg.classList.remove('opacity-100');
+          backImg.classList.add('opacity-0');
+          frontImgActive = true;
+        }
+      }
+
+      // Smooth text transition
+      if (textContainer) {
+        textContainer.classList.add('opacity-0', 'translate-y-1');
+        setTimeout(() => {
+          const tagEl = document.getElementById('curated-banner-tag');
+          const titleEl = document.getElementById('curated-banner-title');
+          const perkEl = document.getElementById('curated-banner-perk');
+          const mobileCounter = document.getElementById('curated-mobile-counter');
+          if (tagEl) tagEl.textContent = slide.tag;
+          if (titleEl) titleEl.textContent = slide.title;
+          if (perkEl) perkEl.innerHTML = slide.perk;
+          if (mobileCounter) mobileCounter.textContent = `${index + 1} of ${curatedSlides.length}`;
+          textContainer.classList.remove('opacity-0', 'translate-y-1');
+        }, 150);
+      }
+
+      // Update Visible Options Tabs ("options dhike") & Dots
+      curatedSlides.forEach((_, i) => {
+        const tab = document.getElementById(`curated-tab-${i}`);
+        const dot = document.getElementById(`curated-dot-${i}`);
+        if (i === index) {
+          if (tab) {
+            tab.className = 'curated-tab px-2.5 py-1 rounded-full text-[11px] font-bold transition-all duration-200 flex items-center gap-1 bg-teal-700 text-white shadow-xs ring-2 ring-teal-700/20 active:scale-95';
+            tab.setAttribute('aria-selected', 'true');
+          }
+          if (dot) {
+            dot.className = 'w-4 h-1.5 rounded-full bg-teal-300 transition-all duration-300';
+          }
+        } else {
+          if (tab) {
+            tab.className = 'curated-tab px-2.5 py-1 rounded-full text-[11px] font-medium transition-all duration-200 flex items-center gap-1 bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-95';
+            tab.setAttribute('aria-selected', 'false');
+          }
+          if (dot) {
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300';
+          }
+        }
+      });
+    }
+
+    function setCuratedSlide(index, event) {
+      if (event) event.stopPropagation();
+      currentCuratedIndex = index;
+      renderCuratedSlide(currentCuratedIndex);
+      restartCuratedAutoSlide();
+    }
+
+    function nextCuratedSlide(event) {
+      if (event) event.stopPropagation();
+      currentCuratedIndex = (currentCuratedIndex + 1) % curatedSlides.length;
+      renderCuratedSlide(currentCuratedIndex);
+      restartCuratedAutoSlide();
+    }
+
+    function prevCuratedSlide(event) {
+      if (event) event.stopPropagation();
+      currentCuratedIndex = (currentCuratedIndex - 1 + curatedSlides.length) % curatedSlides.length;
+      renderCuratedSlide(currentCuratedIndex);
+      restartCuratedAutoSlide();
+    }
+
+    function handleCuratedCardClick() {
+      const slide = curatedSlides[currentCuratedIndex];
+      if (slide && slide.id) {
+        openRestaurant(slide.id);
+      }
+    }
+
+    function startCuratedAutoSlide() {
+      stopCuratedAutoSlide();
+      curatedTimer = setInterval(() => {
+        currentCuratedIndex = (currentCuratedIndex + 1) % curatedSlides.length;
+        renderCuratedSlide(currentCuratedIndex);
+      }, 3500);
+    }
+
+    function stopCuratedAutoSlide() {
+      if (curatedTimer) {
+        clearInterval(curatedTimer);
+        curatedTimer = null;
+      }
+    }
+
+    function restartCuratedAutoSlide() {
+      stopCuratedAutoSlide();
+      startCuratedAutoSlide();
+    }
+
+    // Attach listeners on load
+    const curatedBannerCard = document.getElementById('curated-banner-card');
+    if (curatedBannerCard) {
+      curatedBannerCard.addEventListener('mouseenter', stopCuratedAutoSlide);
+      curatedBannerCard.addEventListener('mouseleave', startCuratedAutoSlide);
+
+      let touchStartX = 0;
+      curatedBannerCard.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopCuratedAutoSlide();
+      }, { passive: true });
+
+      curatedBannerCard.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX - 40) {
+          nextCuratedSlide();
+        } else if (touchEndX > touchStartX + 40) {
+          prevCuratedSlide();
+        }
+        startCuratedAutoSlide();
+      }, { passive: true });
+    }
+
+    startCuratedAutoSlide();
   </script>
 </body>
 </html>

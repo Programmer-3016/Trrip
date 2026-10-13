@@ -118,8 +118,8 @@
               <span class="material-symbols-outlined text-[18px]">notifications</span>
               <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-primary"></span>
             </button>
-            <button aria-label="User Profile" onclick="feedback('Traveller Profile: Booking ID wi83n')" class="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200/90 focus:outline-none ring-2 ring-slate-100 hover:ring-primary/40 active:scale-95 transition-all">
-              <img class="w-full h-full object-cover" alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uL3g47A0q8U2oJBDtwHH5WQkMKD-fo7AawuW8kHwTlfSi2o4RZkcWAwE5925Ouz-C4op8RmUD6YYZryKPRSyPKotjO5CHniA_9tm0MSkYtMN3BoCtNaoXEQRvHEM6zdWQjzTrCa--IeQJk4JqTY2WRN7HQFj9t9kiNCdRPYTz3bnzya9FRt7hA3IvFJVKYyLVaWYqJRNK4Oz-poOIEF1vI35FV3cP--tX_V2zGJUW7g3y36dXhxS">
+            <button id="btn-hamburger" aria-label="Open Navigation Menu" onclick="openNavDrawer()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 hover:text-slate-900 transition-colors active:scale-95 focus:outline-none">
+              <span class="material-symbols-outlined text-[20px]">menu</span>
             </button>
           </div>
         </div>
@@ -794,11 +794,159 @@
         <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Activities</span>
       </button>
       <!-- Profile -->
-      <button onclick="feedback('Traveller Profile: Booking ID wi83n')" aria-label="Profile" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
+      <button onclick="openNavDrawer()" aria-label="Profile" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
         <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">person</span>
         <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Profile</span>
       </button>
     </nav>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- NAVIGATION DRAWER (MATCHES SCREENSHOT FROM REAL TRRIP APP)                -->
+  <!-- ========================================================================= -->
+  <div id="nav-drawer-overlay" class="hidden opacity-0 fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end transition-opacity duration-300" onclick="if(event.target===this)closeNavDrawer()">
+    <div id="nav-drawer-panel" class="w-[86%] max-w-[350px] h-full bg-[#f8fafc] rounded-l-3xl shadow-2xl p-4 sm:p-5 flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 ease-out translate-x-full">
+      
+      <div class="space-y-3.5">
+        <!-- Top Profile & Close Header -->
+        <div class="flex items-start justify-between pt-1">
+          <div class="flex items-center gap-3">
+            <div class="relative w-12 h-12 rounded-full bg-teal-100/90 border border-teal-200/80 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-teal-700 text-[26px]">person</span>
+              <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+            </div>
+            <div>
+              <p class="text-[11px] font-medium text-slate-400 leading-tight">Welcome</p>
+              <h2 class="text-lg font-headline font-extrabold text-slate-900 leading-tight">Sarthak</h2>
+              <div class="flex items-center gap-1.5 text-xs text-slate-700 font-semibold mt-0.5">
+                <span class="material-symbols-outlined text-[15px] text-teal-800">luggage</span>
+                <span>Jerry</span>
+              </div>
+              <p class="text-[11px] font-bold text-teal-700 mt-0.5"># Booking ID:- WI83N</p>
+            </div>
+          </div>
+
+          <button onclick="closeNavDrawer()" aria-label="Close Menu" class="w-8 h-8 rounded-full bg-white border border-slate-200/80 flex items-center justify-center text-slate-400 hover:text-slate-700 shadow-2xs active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+
+        <!-- Location Selector Card -->
+        <div onclick="closeNavDrawer(); openLocationModal();" class="p-3 bg-white rounded-2xl border border-slate-200/70 shadow-xs flex items-center justify-between cursor-pointer hover:border-teal-300 active:scale-[0.99] transition-all group">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-emerald-50 border border-emerald-200/60 text-emerald-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+            </div>
+            <div>
+              <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400 block leading-tight">LOCATION</span>
+              <span id="drawer-location-city" class="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors">Jaipur</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-slate-400 text-[18px] group-hover:text-primary transition-colors">keyboard_arrow_down</span>
+        </div>
+
+        <!-- Group 1: Home & Bookings -->
+        <div class="bg-white rounded-2xl border border-slate-200/70 shadow-xs overflow-hidden divide-y divide-slate-100">
+          <button onclick="closeNavDrawer(); showDiscovery();" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">home</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Home</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 text-[16px] group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+
+          <button onclick="closeNavDrawer(); feedback('Viewing Bookings for WI83N');" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Bookings</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 text-[16px] group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+        </div>
+
+        <!-- Group 2: Trip Tracking, Essentials, Safety & Docs -->
+        <div class="bg-white rounded-2xl border border-slate-200/70 shadow-xs overflow-hidden divide-y divide-slate-100">
+          <button onclick="closeNavDrawer(); feedback('Train / Flight Tracking: On Schedule');" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">near_me</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Train / Flight Tracking</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 text-[16px] group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+
+          <button onclick="closeNavDrawer(); feedback('Things To Carry: Packing Checklist loaded');" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">inventory_2</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Things To Carry</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 text-[16px] group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+
+          <button onclick="closeNavDrawer(); feedback('Safety Tips for Pink City Jaipur loaded');" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">shield</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Safety Tips</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 text-[16px] group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+
+          <button onclick="closeNavDrawer(); feedback('Documents: ID Cards & Tickets stored securely');" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">description</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Documents</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 text-[16px] group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+        </div>
+
+        <!-- Group 3: Share Location -->
+        <div class="bg-white rounded-2xl border border-slate-200/70 shadow-xs overflow-hidden">
+          <button onclick="closeNavDrawer(); shareRestaurant();" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">share</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Share Location</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 text-[16px] group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+        </div>
+
+        <!-- Group 4: Settings Accordion -->
+        <div class="bg-white rounded-2xl border border-slate-200/70 shadow-xs overflow-hidden">
+          <button onclick="feedback('Settings: App version 2.4.0');" class="w-full p-3 flex items-center justify-between hover:bg-slate-50 text-left transition-colors active:scale-[0.99] group">
+            <div class="flex items-center gap-3">
+              <div class="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">settings</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-primary transition-colors">Settings</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-400 text-[18px]">keyboard_arrow_down</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Logout Button at bottom -->
+      <div class="pt-4 pb-2">
+        <button onclick="closeNavDrawer(); feedback('Logged out successfully');" class="w-full py-3 px-4 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200/70 font-bold text-xs flex items-center justify-center gap-2 shadow-2xs active:scale-[0.98] transition-all">
+          <span class="material-symbols-outlined text-[17px]">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <!-- Interactive Location Details Modal -->
@@ -1331,6 +1479,31 @@
       }
     }
 
+    // Navigation Drawer Functions (Matches Real Trrip App)
+    function openNavDrawer() {
+      const overlay = document.getElementById('nav-drawer-overlay');
+      const panel = document.getElementById('nav-drawer-panel');
+      if (overlay && panel) {
+        overlay.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          overlay.classList.remove('opacity-0');
+          panel.classList.remove('translate-x-full');
+        });
+      }
+    }
+
+    function closeNavDrawer() {
+      const overlay = document.getElementById('nav-drawer-overlay');
+      const panel = document.getElementById('nav-drawer-panel');
+      if (overlay && panel) {
+        overlay.classList.add('opacity-0');
+        panel.classList.add('translate-x-full');
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+        }, 280);
+      }
+    }
+
     // Location Picker Modal Functions
     function openLocationModal() {
       document.getElementById('location-modal').classList.remove('hidden');
@@ -1343,6 +1516,10 @@
     function setExactLocation(loc) {
       closeLocationModal();
       document.getElementById('top-bar-city').textContent = loc;
+      const drawerLoc = document.getElementById('drawer-location-city');
+      if (drawerLoc) {
+        drawerLoc.textContent = loc;
+      }
       const subtitleMap = {
         'Jaipur': 'Near Albert Hall Museum',
         'C-Scheme, Jaipur': 'Near Central Park & Statue Circle',

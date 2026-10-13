@@ -113,13 +113,13 @@
             </div>
           </div>
           <!-- Trailing Action Icons -->
-          <div class="flex items-center space-x-1.5">
-            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-[0.98]">
+          <div class="flex items-center space-x-2">
+            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-95 focus:outline-none">
               <span class="material-symbols-outlined text-[18px]">notifications</span>
               <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-primary"></span>
             </button>
-            <button aria-label="Saved places" onclick="feedback('Saved places: Surya Mahal, Retreat')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-[0.98]">
-              <span class="material-symbols-outlined text-[18px]">bookmark</span>
+            <button aria-label="User Profile" onclick="feedback('Traveller Profile: Booking ID wi83n')" class="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200/90 focus:outline-none ring-2 ring-slate-100 hover:ring-primary/40 active:scale-95 transition-all">
+              <img class="w-full h-full object-cover" alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uL3g47A0q8U2oJBDtwHH5WQkMKD-fo7AawuW8kHwTlfSi2o4RZkcWAwE5925Ouz-C4op8RmUD6YYZryKPRSyPKotjO5CHniA_9tm0MSkYtMN3BoCtNaoXEQRvHEM6zdWQjzTrCa--IeQJk4JqTY2WRN7HQFj9t9kiNCdRPYTz3bnzya9FRt7hA3IvFJVKYyLVaWYqJRNK4Oz-poOIEF1vI35FV3cP--tX_V2zGJUW7g3y36dXhxS">
             </button>
           </div>
         </div>
@@ -804,84 +804,100 @@
   <!-- Interactive Location Details Modal -->
   <div id="location-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity" onclick="if(event.target===this)closeLocationModal()">
     <div class="w-full max-w-[420px] bg-white rounded-t-3xl sm:rounded-3xl p-5 space-y-4 max-h-[85vh] overflow-y-auto shadow-2xl animate-in slide-in-from-bottom duration-300">
-      <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-2 border-b border-slate-100">
         <div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-primary">Location Details</span>
-          <h3 class="font-headline text-base font-extrabold text-slate-900">Your Dining Location</h3>
+          <h3 class="font-headline text-base font-extrabold text-slate-900">Select Location</h3>
+          <p class="text-xs text-slate-500">Choose your dining area in Jaipur</p>
         </div>
         <button onclick="closeLocationModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 active:scale-95 transition-all">
           <span class="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
 
-      <!-- Current Exact Location Card -->
-      <div class="p-3.5 rounded-2xl bg-teal-50/70 border border-teal-200/80 space-y-2">
-        <div class="flex items-start gap-3">
-          <div class="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-xs">
-            <span class="material-symbols-outlined text-[20px]">my_location</span>
+      <!-- Native "Use Current Location" Row (Real Production App Pattern) -->
+      <button onclick="setExactLocation('C-Scheme, Jaipur')" class="w-full p-3 rounded-2xl bg-slate-50 hover:bg-teal-50/60 border border-slate-200/90 hover:border-teal-200 flex items-center justify-between text-left transition-all active:scale-[0.99] group shadow-2xs">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200/60 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">my_location</span>
           </div>
-          <div class="flex-1">
-            <div class="flex items-center justify-between">
-              <span class="text-[11px] font-bold text-teal-800 uppercase tracking-wide">Exact Current Location</span>
-              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                Active GPS
-              </span>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-primary transition-colors">Use Current Location</span>
+              <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">GPS</span>
             </div>
-            <p class="font-headline text-sm font-extrabold text-slate-900 mt-0.5">C-Scheme, Jaipur</p>
-            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Ashok Nagar, MI Road Area, Jaipur 302001 (Near Raj Mandir Cinema &amp; Albert Hall)</p>
+            <p class="text-[11px] text-slate-500 truncate mt-0.5">C-Scheme, Ashok Nagar, Jaipur 302001</p>
           </div>
         </div>
-        <div class="pt-2 border-t border-teal-200/50 flex items-center justify-between text-xs">
-          <span class="text-[11px] text-slate-500">Accurate to ~15 meters</span>
-          <button onclick="setExactLocation('C-Scheme, Jaipur')" class="text-xs font-bold text-primary hover:underline flex items-center gap-0.5">
-            <span>Show exact in top bar</span>
-            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-          </button>
-        </div>
-      </div>
+        <span class="material-symbols-outlined text-slate-300 text-[18px] group-hover:text-primary transition-colors shrink-0">chevron_right</span>
+      </button>
 
       <!-- Popular Localities in Jaipur -->
       <div class="space-y-2 pt-1">
-        <p class="text-xs font-bold text-slate-700">Explore Other Dining Hubs in Jaipur</p>
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Popular Dining Hubs</span>
+          <span class="text-[11px] text-slate-400">Jaipur</span>
+        </div>
+
         <div class="space-y-1.5">
-          <button onclick="setExactLocation('MI Road, Jaipur')" class="w-full p-2.5 rounded-xl border border-slate-200 hover:border-primary/50 hover:bg-slate-50 flex items-center justify-between text-left transition-all group">
+          <button onclick="setExactLocation('C-Scheme, Jaipur')" class="w-full p-2.5 rounded-xl border border-slate-200/80 hover:border-primary/50 hover:bg-slate-50 flex items-center justify-between text-left transition-all active:scale-[0.99] group">
             <div class="flex items-center gap-2.5">
-              <span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-primary">storefront</span>
+              <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-teal-50 group-hover:text-primary transition-colors shrink-0">
+                <span class="material-symbols-outlined text-[17px]">restaurant</span>
+              </div>
               <div>
-                <p class="text-xs font-bold text-slate-900">MI Road &amp; Panch Batti</p>
-                <p class="text-[11px] text-slate-500">Heritage sweets, lassi &amp; traditional thalis (0.8 km)</p>
+                <p class="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors">C-Scheme</p>
+                <p class="text-[11px] text-slate-500">Fine dining, rooftop cafes &amp; craft coffee • Central</p>
               </div>
             </div>
-            <span class="material-symbols-outlined text-[16px] text-slate-300 group-hover:text-primary">chevron_right</span>
+            <span class="material-symbols-outlined text-[16px] text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
           </button>
 
-          <button onclick="setExactLocation('Raja Park, Jaipur')" class="w-full p-2.5 rounded-xl border border-slate-200 hover:border-primary/50 hover:bg-slate-50 flex items-center justify-between text-left transition-all group">
+          <button onclick="setExactLocation('MI Road, Jaipur')" class="w-full p-2.5 rounded-xl border border-slate-200/80 hover:border-primary/50 hover:bg-slate-50 flex items-center justify-between text-left transition-all active:scale-[0.99] group">
             <div class="flex items-center gap-2.5">
-              <span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-primary">local_cafe</span>
+              <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-teal-50 group-hover:text-primary transition-colors shrink-0">
+                <span class="material-symbols-outlined text-[17px]">storefront</span>
+              </div>
               <div>
-                <p class="text-xs font-bold text-slate-900">Raja Park</p>
-                <p class="text-[11px] text-slate-500">Trendy cafes, street food &amp; bakeries (3.2 km)</p>
+                <p class="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors">MI Road &amp; Panch Batti</p>
+                <p class="text-[11px] text-slate-500">Heritage sweets, lassi &amp; traditional thalis • 0.8 km</p>
               </div>
             </div>
-            <span class="material-symbols-outlined text-[16px] text-slate-300 group-hover:text-primary">chevron_right</span>
+            <span class="material-symbols-outlined text-[16px] text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
           </button>
 
-          <button onclick="setExactLocation('Malviya Nagar, Jaipur')" class="w-full p-2.5 rounded-xl border border-slate-200 hover:border-primary/50 hover:bg-slate-50 flex items-center justify-between text-left transition-all group">
+          <button onclick="setExactLocation('Raja Park, Jaipur')" class="w-full p-2.5 rounded-xl border border-slate-200/80 hover:border-primary/50 hover:bg-slate-50 flex items-center justify-between text-left transition-all active:scale-[0.99] group">
             <div class="flex items-center gap-2.5">
-              <span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-primary">wine_bar</span>
+              <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-teal-50 group-hover:text-primary transition-colors shrink-0">
+                <span class="material-symbols-outlined text-[17px]">local_cafe</span>
+              </div>
               <div>
-                <p class="text-xs font-bold text-slate-900">Malviya Nagar</p>
-                <p class="text-[11px] text-slate-500">Cocktail lounges &amp; rooftop bars (5.4 km)</p>
+                <p class="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors">Raja Park</p>
+                <p class="text-[11px] text-slate-500">Trendy cafes, bakeries &amp; street food • 3.2 km</p>
               </div>
             </div>
-            <span class="material-symbols-outlined text-[16px] text-slate-300 group-hover:text-primary">chevron_right</span>
+            <span class="material-symbols-outlined text-[16px] text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+          </button>
+
+          <button onclick="setExactLocation('Malviya Nagar, Jaipur')" class="w-full p-2.5 rounded-xl border border-slate-200/80 hover:border-primary/50 hover:bg-slate-50 flex items-center justify-between text-left transition-all active:scale-[0.99] group">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-teal-50 group-hover:text-primary transition-colors shrink-0">
+                <span class="material-symbols-outlined text-[17px]">wine_bar</span>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors">Malviya Nagar</p>
+                <p class="text-[11px] text-slate-500">Cocktail lounges &amp; rooftop bars • 5.4 km</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-[16px] text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
           </button>
         </div>
       </div>
       
-      <div class="pt-2 border-t border-slate-100 flex justify-end">
-        <button onclick="setExactLocation('Jaipur')" class="text-xs text-slate-500 hover:text-slate-800 font-semibold px-2 py-1">
+      <!-- Footer Reset -->
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+        <span class="text-slate-400">Viewing places in Jaipur</span>
+        <button onclick="setExactLocation('Jaipur')" class="text-primary hover:text-primary-dark font-bold px-2 py-1 hover:underline">
           Reset to "Jaipur"
         </button>
       </div>
@@ -1327,6 +1343,17 @@
     function setExactLocation(loc) {
       closeLocationModal();
       document.getElementById('top-bar-city').textContent = loc;
+      const subtitleMap = {
+        'Jaipur': 'Near Albert Hall Museum',
+        'C-Scheme, Jaipur': 'Near Central Park & Statue Circle',
+        'MI Road, Jaipur': 'Near Panch Batti & Raj Mandir',
+        'Raja Park, Jaipur': 'Near LBS College & Fashion Hub',
+        'Malviya Nagar, Jaipur': 'Near World Trade Park (WTP)'
+      };
+      const subEl = document.getElementById('top-bar-subtitle');
+      if (subEl) {
+        subEl.textContent = subtitleMap[loc] || 'Jaipur Dining Hub';
+      }
       feedback('Dining location set to: ' + loc);
     }
 

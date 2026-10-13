@@ -446,7 +446,7 @@
     <!-- ========================================================================= -->
     <!-- VIEW 2: RESTAURANT DETAIL SCREEN (SCREEN 2)                               -->
     <!-- ========================================================================= -->
-    <div id="view-detail" class="hidden flex-col flex-1 w-full max-w-xl mx-auto px-3.5 sm:px-4 py-2 sm:py-3 pb-28 space-y-3.5 animate-in fade-in duration-200">
+    <div id="view-detail" class="hidden flex-col flex-1 w-full max-w-xl mx-auto px-3 sm:px-4 py-2 sm:py-3 pb-28 space-y-3.5 animate-in fade-in duration-200">
 
       <!-- 1. Immersive Hero Gallery Component (Matches Screenshot 1) -->
       <section class="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 shadow-md">
@@ -497,28 +497,28 @@
         </div>
       </section>
 
-      <!-- 2. Quick Key Stats & Direct Action Cluster (Matches Screenshot 1) -->
-      <section class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-xs flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+      <!-- 2. Quick Key Stats & Direct Action Cluster (Matches Reference Screenshot 1) -->
+      <section class="bg-white rounded-2xl p-2 sm:p-3 border border-slate-200/80 shadow-xs flex items-center justify-between gap-1 sm:gap-2">
+        <div class="flex items-center gap-1 sm:gap-1.5 min-w-0">
           <!-- Cost for two -->
-          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs font-bold text-slate-800 shrink-0">
-            <span class="material-symbols-outlined text-[16px] text-slate-500">payments</span>
+          <div class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-800 whitespace-nowrap shrink-0">
+            <span class="material-symbols-outlined text-[14px] sm:text-[16px] text-slate-500">payments</span>
             <span id="detail-cost">₹1,500 for two</span>
           </div>
           <!-- Hours Dropdown Trigger -->
-          <button onclick="openHoursModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-50/80 border border-teal-200/70 text-xs font-bold text-teal-800 shrink-0 hover:bg-teal-100 transition-colors active:scale-95">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <button onclick="openHoursModal()" class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-teal-50/80 border border-teal-200/80 text-[11px] sm:text-xs font-bold text-teal-900 whitespace-nowrap shrink-0 hover:bg-teal-100 transition-colors active:scale-95">
+            <span class="material-symbols-outlined text-[14px] sm:text-[16px] text-teal-700">schedule</span>
             <span id="detail-hours">Opens till 22:00</span>
-            <span class="material-symbols-outlined text-[16px] text-teal-600">keyboard_arrow_down</span>
+            <span class="material-symbols-outlined text-[14px] sm:text-[16px] text-teal-700">keyboard_arrow_down</span>
           </button>
         </div>
-        <!-- Right Circle Actions (Directions & Call) -->
-        <div class="flex items-center gap-1.5 shrink-0">
-          <button onclick="openMaps()" title="Get Directions" aria-label="Directions" class="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 hover:bg-teal-50 hover:text-teal-700 text-slate-700 flex items-center justify-center transition-colors active:scale-95 shadow-2xs">
-            <span class="material-symbols-outlined text-[18px]">near_me</span>
+        <!-- Right Circle Actions (Directions & Call in Teal) -->
+        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <button onclick="openMaps()" title="Get Directions" aria-label="Directions" class="w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-white border border-slate-200/90 hover:bg-teal-50 hover:border-teal-300 text-teal-700 flex items-center justify-center transition-all active:scale-95 shadow-2xs">
+            <span class="material-symbols-outlined text-[17px] sm:text-[18px]">directions</span>
           </button>
-          <button onclick="callRestaurant()" title="Call Restaurant" aria-label="Call" class="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 hover:bg-teal-50 hover:text-teal-700 text-slate-700 flex items-center justify-center transition-colors active:scale-95 shadow-2xs">
-            <span class="material-symbols-outlined text-[18px]">call</span>
+          <button onclick="callRestaurant()" title="Call Restaurant" aria-label="Call" class="w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-white border border-slate-200/90 hover:bg-teal-50 hover:border-teal-300 text-teal-700 flex items-center justify-center transition-all active:scale-95 shadow-2xs">
+            <span class="material-symbols-outlined text-[17px] sm:text-[18px]">call</span>
           </button>
         </div>
       </section>
@@ -1428,7 +1428,7 @@
         rating: '4.2',
         reviews: '1.2k reviews',
         cost: '₹1,800 for two',
-        hours: 'Opens till 01:00 AM',
+        hours: 'Opens till 01:00',
         address: 'Fortune Select Metropolitan, Bais Godam, Jaipur, Rajasthan 302006',
         proximity: '1.6 km from Albert Hall Museum',
         heroImg: './assets/jaipur_rooftop_dining.jpg',

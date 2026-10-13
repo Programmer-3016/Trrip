@@ -92,87 +92,127 @@
   <!-- Responsive Application Canvas -->
   <div class="w-full max-w-[420px] min-h-screen bg-background relative flex flex-col pb-24 shadow-2xl lg:max-w-none lg:pb-0 lg:shadow-none transition-all duration-300">
 
-    <!-- 1. Top Header & Search Block (Elevated Modern Design) -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md transition-all duration-200 border-b border-slate-200/80 shadow-xs">
-      <div class="px-4 pt-3 pb-2.5 space-y-2.5 max-w-md mx-auto lg:max-w-6xl lg:flex lg:items-center lg:gap-6 lg:px-8 lg:py-3.5 lg:space-y-0">
-        <!-- Desktop Brand -->
-        <a href="#" onclick="showDiscovery(); return false;" class="hidden lg:flex lg:order-1 lg:items-center lg:gap-2.5 lg:shrink-0 group/brand" aria-label="Trrip home">
-          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-teal-500 text-white shadow-sm group-hover/brand:scale-105 transition-transform">
-            <span class="material-symbols-outlined text-[21px]">explore</span>
-          </span>
-          <span class="font-headline text-[21px] font-extrabold tracking-tight text-on-surface">Trrip</span>
-        </a>
-        
-        <!-- Top Row: Location & Actions -->
-        <div class="flex justify-between items-center w-full lg:order-3 lg:w-auto lg:shrink-0 lg:gap-4">
-          <!-- Modern Location Selector Pill -->
-          <button id="location-selector" onclick="openLocationModal()" class="flex items-center gap-2 py-1.5 px-3 rounded-full bg-white hover:bg-slate-50 border border-slate-200/90 shadow-[0_1px_3px_rgba(15,23,42,0.04)] hover:border-slate-300 transition-all duration-200 active:scale-95 group focus:outline-none">
-            <div class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200/60 flex items-center justify-center text-primary group-hover:scale-105 transition-transform shrink-0">
-              <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+    <!-- 1. Sticky Header + Integrated Route Beacon Split Frame -->
+    <header class="top-0 sticky z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+      <div class="px-4 pt-2.5 pb-2 space-y-2 max-w-md mx-auto lg:max-w-6xl lg:px-8">
+        <!-- Top Bar Location & Actions -->
+        <div class="flex justify-between items-center">
+          <!-- Leading: Location Title & Dropdown -->
+          <div onclick="openLocationModal()" class="flex items-center space-x-2 active:scale-[0.98] transition-transform duration-150 cursor-pointer text-left">
+            <div class="w-8 h-8 rounded-full bg-teal-50 border border-teal-200/60 flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-[18px]">location_on</span>
             </div>
-            <div class="flex items-center gap-1">
-              <span id="top-bar-city" class="font-headline text-[13px] font-bold text-slate-900 tracking-tight group-hover:text-primary transition-colors">Jaipur</span>
-              <span class="material-symbols-outlined text-slate-400 text-[16px] transition-transform group-hover:translate-y-0.5 group-hover:text-primary">keyboard_arrow_down</span>
+            <div>
+              <div class="flex items-center space-x-1">
+                <span id="top-bar-city" class="text-[16px] font-bold text-slate-900 leading-tight">Jaipur</span>
+                <span class="material-symbols-outlined text-primary text-[18px]">keyboard_arrow_down</span>
+              </div>
+              <p id="top-bar-subtitle" class="text-[11px] text-slate-500 leading-none mt-0.5">
+                Near Albert Hall Museum
+              </p>
             </div>
-          </button>
-
-          <!-- Notification & User Avatar -->
-          <div class="flex items-center space-x-2">
-            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative w-8 h-8 rounded-full flex items-center justify-center bg-white hover:bg-slate-50 border border-slate-200/80 shadow-[0_1px_3px_rgba(15,23,42,0.04)] text-slate-600 hover:text-slate-900 active:scale-95 transition-all focus:outline-none">
-              <span class="material-symbols-outlined text-[19px]">notifications</span>
-              <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+          </div>
+          <!-- Trailing Action Icons -->
+          <div class="flex items-center space-x-1.5">
+            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-[0.98]">
+              <span class="material-symbols-outlined text-[18px]">notifications</span>
+              <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-primary"></span>
             </button>
-            <button aria-label="User Profile" onclick="feedback('Traveller Profile: Booking ID wi83n')" class="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200/90 focus:outline-none ring-2 ring-slate-100 hover:ring-primary/40 active:scale-95 transition-all shadow-[0_1px_3px_rgba(15,23,42,0.04)]">
-              <img class="w-full h-full object-cover" alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uL3g47A0q8U2oJBDtwHH5WQkMKD-fo7AawuW8kHwTlfSi2o4RZkcWAwE5925Ouz-C4op8RmUD6YYZryKPRSyPKotjO5CHniA_9tm0MSkYtMN3BoCtNaoXEQRvHEM6zdWQjzTrCa--IeQJk4JqTY2WRN7HQFj9t9kiNCdRPYTz3bnzya9FRt7hA3IvFJVKYyLVaWYqJRNK4Oz-poOIEF1vI35FV3cP--tX_V2zGJUW7g3y36dXhxS">
+            <button aria-label="Saved places" onclick="feedback('Saved places: Surya Mahal, Retreat')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-[0.98]">
+              <span class="material-symbols-outlined text-[18px]">bookmark</span>
             </button>
           </div>
         </div>
 
-        <!-- Integrated Elevated Search Bar -->
-        <div class="relative flex items-center w-full bg-white rounded-2xl border border-slate-200/90 shadow-[0_2px_8px_-2px_rgba(15,23,42,0.05)] hover:border-slate-300 hover:shadow-[0_4px_14px_-2px_rgba(15,23,42,0.08)] focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 lg:order-2 lg:flex-1 transition-all duration-200 group/search">
-          <div class="pl-3.5 pr-2 flex items-center pointer-events-none text-slate-400 group-focus-within/search:text-primary transition-colors">
-            <span class="material-symbols-outlined text-[20px]">search</span>
+        <!-- Interactive Compact Route Beacon / Destination Mini-Bar -->
+        <div class="bg-white rounded-xl p-2 border border-slate-200/80 flex items-center justify-between gap-2 shadow-xs">
+          <div class="flex items-center space-x-2 min-w-0">
+            <div class="w-6 h-6 rounded-lg bg-teal-50 flex items-center justify-center text-primary shrink-0 border border-teal-200/50">
+              <span class="material-symbols-outlined text-[14px]">explore</span>
+            </div>
+            <div class="truncate">
+              <span class="text-[11px] font-bold text-slate-900 block truncate">Explore Food Zone • Albert Hall Hub</span>
+              <span class="text-[10px] text-slate-500 block truncate">3 curated dining spots within 1.5 km radius</span>
+            </div>
           </div>
-          <input id="search-input" class="w-full py-2.5 sm:py-3 pr-11 bg-transparent text-slate-900 placeholder:text-slate-400 text-xs sm:text-[13.5px] font-medium border-0 focus:ring-0 focus:outline-none tracking-tight" placeholder="Search restaurants, cuisines, or dishes..." type="text">
-          <button aria-label="Adjust filters" onclick="feedback('Filters active: Open Now, C-Scheme')" class="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-slate-100/90 hover:bg-teal-50 border border-slate-200/70 hover:border-teal-200 text-slate-500 hover:text-primary transition-all flex items-center justify-center active:scale-95 group/filter shadow-2xs">
-            <span class="material-symbols-outlined text-[17px] transition-transform group-hover/filter:rotate-90 duration-200">tune</span>
+          <button onclick="openMaps()" class="shrink-0 text-[10px] font-bold bg-teal-100 text-teal-900 px-2.5 py-1 rounded-full flex items-center gap-0.5 active:scale-95 transition-transform hover:bg-teal-200">
+            <span>Map</span>
+            <span class="material-symbols-outlined text-[12px]">map</span>
           </button>
         </div>
+
+        <!-- Category Pill Rail -->
+        <nav aria-label="Categories" class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar pt-1 pb-1">
+          <!-- Dining (Active) -->
+          <button class="flex items-center space-x-1 bg-primary text-white px-3 py-1 rounded-full shadow-xs shrink-0 active:scale-[0.98]">
+            <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+            <span class="text-[11px] font-bold">Dining</span>
+          </button>
+          <!-- Stays -->
+          <button onclick="feedback('Stays feature coming soon in Jaipur')" class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 px-3 py-1 rounded-full shadow-xs shrink-0 hover:bg-slate-50 active:scale-[0.98]">
+            <span class="material-symbols-outlined text-[15px] text-slate-400">hotel</span>
+            <span class="text-[11px] font-semibold">Stays</span>
+          </button>
+          <!-- Activities -->
+          <button onclick="feedback('Activities feature coming soon')" class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 px-3 py-1 rounded-full shadow-xs shrink-0 hover:bg-slate-50 active:scale-[0.98]">
+            <span class="material-symbols-outlined text-[15px] text-slate-400">local_activity</span>
+            <span class="text-[11px] font-semibold">Activities</span>
+          </button>
+          <!-- Shopping -->
+          <button onclick="feedback('Johari & Bapu Bazaar shopping guide')" class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 px-3 py-1 rounded-full shadow-xs shrink-0 hover:bg-slate-50 active:scale-[0.98]">
+            <span class="material-symbols-outlined text-[15px] text-slate-400">shopping_bag</span>
+            <span class="text-[11px] font-semibold">Shopping</span>
+          </button>
+          <!-- Audio Guides -->
+          <button onclick="feedback('Audio Guides: Albert Hall & Amer Fort')" class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 px-3 py-1 rounded-full shadow-xs shrink-0 hover:bg-slate-50 active:scale-[0.98]">
+            <span class="material-symbols-outlined text-[15px] text-primary">headphones</span>
+            <span class="text-[11px] font-semibold">Audio Guides</span>
+          </button>
+        </nav>
       </div>
     </header>
 
     <!-- ========================================================================= -->
     <!-- VIEW 1: RESTAURANT DISCOVERY FEED (SCREEN 1)                             -->
     <!-- ========================================================================= -->
-    <main id="view-discovery" class="flex-1 flex flex-col space-y-3.5 lg:w-full lg:max-w-6xl lg:mx-auto lg:space-y-6 lg:pb-8">
+    <main id="view-discovery" class="flex-1 flex flex-col space-y-3 lg:w-full lg:max-w-6xl lg:mx-auto lg:space-y-5 lg:pb-8">
 
-      <!-- 2. Quick Filter Chips -->
-      <section class="w-full overflow-hidden pt-1 pb-0.5">
-        <div class="flex items-center space-x-2 px-4 overflow-x-auto no-scrollbar py-0.5 lg:flex-wrap lg:gap-2 lg:space-x-0 lg:px-8 lg:overflow-visible">
-          <!-- Filter: Veg Only -->
-          <button data-filter="veg" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
-            <span class="material-symbols-outlined text-[16px] text-emerald-600">eco</span>
-            <span>Veg Only</span>
+      <!-- Search & Sticky Micro-Filter Rail -->
+      <section class="space-y-2 pt-2 px-4 lg:px-8">
+        <div class="relative flex items-center">
+          <span class="absolute left-3.5 text-slate-400 flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-[18px]">search</span>
+          </span>
+          <input id="search-input" class="w-full h-10 pl-9 pr-10 bg-white text-slate-900 placeholder:text-slate-400 text-xs font-medium rounded-xl border border-slate-200 shadow-xs focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="Search cuisines, rooftops, Dal Baati..." type="text"/>
+          <button onclick="feedback('Voice search active: Listening...')" class="absolute right-2.5 w-6 h-6 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center hover:text-slate-800 transition-colors active:scale-95" title="Voice Search">
+            <span class="material-symbols-outlined text-[15px]">mic</span>
           </button>
-          <!-- Filter: Open Now (Active) -->
-          <button data-filter="open" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-600/30 text-primary text-xs whitespace-nowrap active:scale-95 transition-all font-bold shadow-2xs">
-            <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">schedule</span>
+        </div>
+        <!-- Micro-Filters Rail -->
+        <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1">
+          <button data-filter="top" data-filter-chip class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 rounded-lg px-2.5 py-1 text-[11px] font-semibold shrink-0 shadow-xs hover:border-slate-300 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-amber-500 text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span>Top Rated 4.5+</span>
+          </button>
+          <button data-filter="veg" data-filter-chip class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 rounded-lg px-2.5 py-1 text-[11px] font-semibold shrink-0 shadow-xs hover:border-slate-300 active:scale-95 transition-all">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block"></span>
+            <span>Pure Veg</span>
+          </button>
+          <button data-filter="rooftop" data-filter-chip class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 rounded-lg px-2.5 py-1 text-[11px] font-semibold shrink-0 shadow-xs hover:border-slate-300 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-primary text-[13px]">wb_twilight</span>
+            <span>Rooftop Vibe</span>
+          </button>
+          <button data-filter="open" data-filter-chip class="flex items-center space-x-1 bg-teal-50 text-primary border border-teal-600/30 rounded-lg px-2.5 py-1 text-[11px] font-bold shrink-0 shadow-xs active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">schedule</span>
             <span>Open Now</span>
           </button>
-          <!-- Filter: Top Rated -->
-          <button data-filter="top" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
-            <span class="material-symbols-outlined text-[16px] text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span>Top Rated</span>
+          <button data-filter="discount" data-filter-chip class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 rounded-lg px-2.5 py-1 text-[11px] font-semibold shrink-0 shadow-xs hover:border-slate-300 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-primary text-[13px]">bolt</span>
+            <span>Prebook Deals (15% OFF)</span>
           </button>
-          <!-- Filter: Near Me -->
-          <button data-filter="near" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
-            <span class="material-symbols-outlined text-[16px] text-slate-400">near_me</span>
-            <span>Near Me</span>
-          </button>
-          <!-- Filter: Discounts & Offers -->
-          <button data-filter="discount" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
-            <span class="material-symbols-outlined text-[16px] text-primary">sell</span>
-            <span>Discounts &amp; Offers</span>
+          <button data-filter="near" data-filter-chip class="flex items-center space-x-1 bg-white text-slate-700 border border-slate-200 rounded-lg px-2.5 py-1 text-[11px] font-semibold shrink-0 shadow-xs hover:border-slate-300 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-slate-400 text-[13px]">directions_walk</span>
+            <span>&lt; 15 min walk</span>
           </button>
         </div>
       </section>

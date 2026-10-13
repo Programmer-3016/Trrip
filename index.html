@@ -776,29 +776,28 @@
       </footer>
     </div>
 
-    <!-- 5. Fixed Scroll-Aware Bottom Navigation Bar -->
-    <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 max-w-[420px] mx-auto bg-white/95 backdrop-blur-2xl border-t border-slate-200/90 shadow-[0_-4px_24px_rgba(15,23,42,0.08)] px-3 py-2 flex items-center justify-around lg:hidden transition-transform duration-300 ease-in-out">
-      <!-- Item 1: Home -->
-      <a href="#" onclick="showDiscovery(); return false;" class="flex flex-col items-center justify-center py-1 px-3 rounded-xl text-slate-400 hover:text-slate-700 transition-all duration-200 active:scale-90 group">
-        <span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">explore</span>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5 text-slate-500 group-hover:text-slate-800">Home</span>
-      </a>
-      <!-- Item 2: Dining (Active) -->
-      <a href="#" onclick="showDiscovery(); return false;" class="relative flex flex-col items-center justify-center py-1 px-4 rounded-xl bg-gradient-to-b from-teal-50 to-emerald-50 text-primary font-bold shadow-xs border border-teal-600/20 active:scale-95 transition-all">
-        <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings: 'FILL' 1;">restaurant</span>
-        <span class="text-[10px] font-headline font-bold text-primary tracking-tight mt-0.5">Dining</span>
-        <span class="absolute -bottom-0.5 w-1.5 h-1 rounded-full bg-primary"></span>
-      </a>
-      <!-- Item 3: Activities -->
-      <a href="#" onclick="feedback('Activities discovery coming soon'); return false;" class="flex flex-col items-center justify-center py-1 px-3 rounded-xl text-slate-400 hover:text-slate-700 transition-all duration-200 active:scale-90 group">
-        <span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">local_activity</span>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5 text-slate-500 group-hover:text-slate-800">Activities</span>
-      </a>
-      <!-- Item 4: Profile -->
-      <a href="#" onclick="feedback('Traveller Profile: Booking ID wi83n'); return false;" class="flex flex-col items-center justify-center py-1 px-3 rounded-xl text-slate-400 hover:text-slate-700 transition-all duration-200 active:scale-90 group">
-        <span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">person</span>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5 text-slate-500 group-hover:text-slate-800">Profile</span>
-      </a>
+    <!-- 5. Fixed Scroll-Aware Bottom Navigation Bar (Matches Reference with Elevated Styling) -->
+    <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-white/95 backdrop-blur-xl max-w-md mx-auto shadow-[0_-4px_24px_rgba(15,23,42,0.08)] border-t border-slate-200/80 transition-transform duration-300 ease-in-out lg:hidden">
+      <!-- Home -->
+      <button onclick="showDiscovery()" aria-label="Home" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
+        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">explore</span>
+        <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Home</span>
+      </button>
+      <!-- Dining (Active Capsule Pill) -->
+      <button onclick="showDiscovery()" aria-label="Dining" class="flex flex-col items-center justify-center bg-teal-100/90 text-teal-900 border border-teal-300/70 rounded-full px-5 py-1.5 transition-all shadow-xs active:scale-95 group focus:outline-none">
+        <span class="material-symbols-outlined text-[20px] text-teal-900" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+        <span class="text-[11px] font-bold tracking-tight">Dining</span>
+      </button>
+      <!-- Activities -->
+      <button onclick="feedback('Activities feature coming soon in Jaipur')" aria-label="Activities" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
+        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">local_activity</span>
+        <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Activities</span>
+      </button>
+      <!-- Profile -->
+      <button onclick="feedback('Traveller Profile: Booking ID wi83n')" aria-label="Profile" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
+        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">person</span>
+        <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Profile</span>
+      </button>
     </nav>
   </div>
 

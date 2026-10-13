@@ -422,3 +422,54 @@ function closeAuditModal() {
   setScrollLock(false);
   document.getElementById('audit-modal')?.classList.add('hidden');
 }
+
+// =========================================================================
+// 9. TRRIP HERITAGE BAZAAR SHOP MODAL
+// =========================================================================
+function openShopModal() {
+  setScrollLock(true);
+  document.getElementById('shop-modal')?.classList.remove('hidden');
+}
+
+function closeShopModal() {
+  setScrollLock(false);
+  document.getElementById('shop-modal')?.classList.add('hidden');
+}
+
+function filterShopCategory(category, btn) {
+  document.querySelectorAll('.shop-cat-btn').forEach(b => {
+    b.className = 'shop-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors';
+  });
+  if (btn) {
+    btn.className = 'shop-cat-btn active px-3 py-1 rounded-full bg-purple-700 text-white text-xs font-bold shadow-2xs transition-colors';
+  }
+  const items = document.querySelectorAll('#shop-items-container [data-shop-category]');
+  items.forEach(item => {
+    if (category === 'all' || item.dataset.shopCategory === category) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+}
+
+function orderShopItem(name, price) {
+  feedback(`Added "${name}" (${price}) to hotel room delivery cart!`);
+}
+
+// =========================================================================
+// 10. CURATED ACTIVITIES MODAL
+// =========================================================================
+function openActivitiesModal() {
+  setScrollLock(true);
+  document.getElementById('activities-modal')?.classList.remove('hidden');
+}
+
+function closeActivitiesModal() {
+  setScrollLock(false);
+  document.getElementById('activities-modal')?.classList.add('hidden');
+}
+
+function bookActivityItem(name, price) {
+  feedback(`Reserved 1 slot for "${name}" (${price}) with Trrip Pass!`);
+}

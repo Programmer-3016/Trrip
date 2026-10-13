@@ -778,28 +778,34 @@
       </footer>
     </div>
 
-    <!-- 5. Fixed Scroll-Aware Bottom Navigation Bar (Matches Reference with Elevated Styling) -->
-    <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-white/95 backdrop-blur-xl max-w-md mx-auto shadow-[0_-4px_24px_rgba(15,23,42,0.08)] border-t border-slate-200/80 transition-transform duration-300 ease-in-out lg:hidden">
-      <!-- Home -->
-      <button onclick="showDiscovery()" aria-label="Home" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
-        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">explore</span>
-        <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Home</span>
-      </button>
-      <!-- Dining (Active Capsule Pill) -->
-      <button onclick="showDiscovery()" aria-label="Dining" class="flex flex-col items-center justify-center bg-teal-100/90 text-teal-900 border border-teal-300/70 rounded-full px-5 py-1.5 transition-all shadow-xs active:scale-95 group focus:outline-none">
-        <span class="material-symbols-outlined text-[20px] text-teal-900" style="font-variation-settings: 'FILL' 1;">restaurant</span>
-        <span class="text-[11px] font-bold tracking-tight">Dining</span>
-      </button>
-      <!-- Activities -->
-      <button onclick="feedback('Activities feature coming soon in Jaipur')" aria-label="Activities" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
-        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">local_activity</span>
-        <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Activities</span>
-      </button>
-      <!-- Profile -->
-      <button onclick="openNavDrawer()" aria-label="Profile" class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-800 px-3 py-1 transition-all active:scale-95 group focus:outline-none">
-        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">person</span>
-        <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-slate-800">Profile</span>
-      </button>
+    <!-- 5. Fixed Scroll-Aware Bottom Navigation Bar (Elevated Modern Dock Layout) -->
+    <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 w-full z-50 bg-white/95 backdrop-blur-2xl border-t border-slate-200/90 shadow-[0_-8px_32px_rgba(15,23,42,0.07)] max-w-md mx-auto transition-transform duration-300 ease-in-out lg:hidden">
+      <div class="flex justify-between items-center px-2 py-1.5">
+        <!-- 1. Home -->
+        <button onclick="showDiscovery()" aria-label="Home" class="flex-1 flex flex-col items-center justify-center py-1 text-slate-400 hover:text-teal-800 transition-all active:scale-90 group focus:outline-none">
+          <span class="material-symbols-outlined text-[22px] group-hover:scale-110 group-hover:text-primary transition-all">explore</span>
+          <span class="text-[10px] font-semibold tracking-tight mt-0.5 group-hover:text-slate-900 transition-colors">Home</span>
+        </button>
+
+        <!-- 2. Dining (Active Elevated Capsule Pill) -->
+        <button onclick="showDiscovery()" aria-label="Dining" class="flex items-center justify-center gap-1.5 bg-[#d1f2eb] text-[#00685f] rounded-full px-5 py-2 shadow-xs transition-all active:scale-95 group focus:outline-none border border-teal-200/80 ring-2 ring-teal-100/50">
+          <span class="material-symbols-outlined text-[20px] text-[#00685f]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+          <span class="text-[11px] font-black tracking-tight text-teal-950">Dining</span>
+        </button>
+
+        <!-- 3. Activities -->
+        <button onclick="openActivitiesModal()" aria-label="Activities" class="flex-1 flex flex-col items-center justify-center py-1 text-slate-400 hover:text-teal-800 transition-all active:scale-90 group focus:outline-none">
+          <span class="material-symbols-outlined text-[22px] group-hover:scale-110 group-hover:text-primary transition-all">local_activity</span>
+          <span class="text-[10px] font-semibold tracking-tight mt-0.5 group-hover:text-slate-900 transition-colors">Activities</span>
+        </button>
+
+        <!-- 4. Shop (Curated Heritage Souvenirs & Crafts) -->
+        <button onclick="openShopModal()" aria-label="Shop" class="relative flex-1 flex flex-col items-center justify-center py-1 text-slate-400 hover:text-purple-800 transition-all active:scale-90 group focus:outline-none">
+          <span class="absolute -top-1 right-2.5 px-1.5 py-0.2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[8px] font-black uppercase tracking-wider shadow-2xs">New</span>
+          <span class="material-symbols-outlined text-[22px] group-hover:scale-110 group-hover:text-purple-700 transition-all">storefront</span>
+          <span class="text-[10px] font-semibold tracking-tight mt-0.5 group-hover:text-purple-900 transition-colors">Shop</span>
+        </button>
+      </div>
     </nav>
   </div>
 
@@ -1458,6 +1464,208 @@
         <div class="pt-3 border-t border-slate-200 flex justify-end">
           <button onclick="closeAuditModal()" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold hover:bg-primary-dark transition-all">
             Close &amp; Test Prototype
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 9. TRRIP HERITAGE BAZAAR SHOP MODAL (NEW 4TH OPTION)                     -->
+  <!-- ======================================================================= -->
+  <div id="shop-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity" onclick="if(event.target===this)closeShopModal()">
+    <div class="w-full max-w-[480px] bg-white rounded-t-3xl sm:rounded-3xl p-5 space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl animate-in slide-in-from-bottom duration-300">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-purple-700 text-[18px]">storefront</span>
+            <h3 class="font-headline text-base font-extrabold text-slate-900">Trrip Heritage Bazaar</h3>
+          </div>
+          <p class="text-xs text-purple-700 font-semibold mt-0.5">Verified Jaipur Artisans • Instant 10% Trrip Pass Discount</p>
+        </div>
+        <button onclick="closeShopModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <!-- Category Filter Chips Rail -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+        <button type="button" onclick="filterShopCategory('all', this)" class="shop-cat-btn active px-3 py-1 rounded-full bg-purple-700 text-white text-xs font-bold shadow-2xs transition-colors shrink-0">All Specialties</button>
+        <button type="button" onclick="filterShopCategory('pottery', this)" class="shop-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors shrink-0">Blue Pottery</button>
+        <button type="button" onclick="filterShopCategory('sweets', this)" class="shop-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors shrink-0">Sweets &amp; Snacks</button>
+        <button type="button" onclick="filterShopCategory('textiles', this)" class="shop-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors shrink-0">Handblock Textiles</button>
+        <button type="button" onclick="filterShopCategory('crafts', this)" class="shop-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors shrink-0">Lac &amp; Jewellery</button>
+      </div>
+
+      <!-- Curated Product Items -->
+      <div id="shop-items-container" class="space-y-2.5">
+        
+        <!-- Product 1: Blue Pottery -->
+        <div data-shop-category="pottery" class="p-3 rounded-2xl border border-slate-200/90 hover:border-purple-300 bg-white hover:bg-purple-50/20 transition-all flex items-center justify-between gap-3 shadow-2xs group">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center shrink-0 text-purple-700 shadow-2xs">
+              <span class="material-symbols-outlined text-[24px]">palette</span>
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-headline text-xs font-bold text-slate-900 group-hover:text-purple-900 transition-colors truncate">Jaipur Blue Pottery Floral Urn</h4>
+              <p class="text-[11px] text-slate-500">Traditional quartz &amp; cobalt glaze • Kot Jeweler</p>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-bold text-xs text-purple-900">₹675</span>
+                <span class="text-[10px] text-slate-400 line-through">₹750</span>
+                <span class="text-[9px] font-extrabold text-emerald-700 bg-emerald-50 px-1 rounded">10% PASS OFF</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="orderShopItem('Blue Pottery Floral Urn', '₹675')" class="px-2.5 py-1.5 rounded-xl bg-purple-100 text-purple-800 hover:bg-purple-200 text-[11px] font-bold transition-all active:scale-95 shrink-0">
+            Order
+          </button>
+        </div>
+
+        <!-- Product 2: Rawat Ghewar -->
+        <div data-shop-category="sweets" class="p-3 rounded-2xl border border-slate-200/90 hover:border-purple-300 bg-white hover:bg-purple-50/20 transition-all flex items-center justify-between gap-3 shadow-2xs group">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center shrink-0 text-amber-700 shadow-2xs">
+              <span class="material-symbols-outlined text-[24px]">bakery_dining</span>
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-headline text-xs font-bold text-slate-900 group-hover:text-purple-900 transition-colors truncate">Rawat Authentic Ghewar &amp; Kachori Box</h4>
+              <p class="text-[11px] text-slate-500">Fresh Mawa Ghewar + 4 Pyaaz Kachoris • Daily Batch</p>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-bold text-xs text-purple-900">₹432</span>
+                <span class="text-[10px] text-slate-400 line-through">₹480</span>
+                <span class="text-[9px] font-extrabold text-emerald-700 bg-emerald-50 px-1 rounded">10% PASS OFF</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="orderShopItem('Rawat Ghewar & Kachori Box', '₹432')" class="px-2.5 py-1.5 rounded-xl bg-purple-100 text-purple-800 hover:bg-purple-200 text-[11px] font-bold transition-all active:scale-95 shrink-0">
+            Order
+          </button>
+        </div>
+
+        <!-- Product 3: Sanganeri Handblock Textiles -->
+        <div data-shop-category="textiles" class="p-3 rounded-2xl border border-slate-200/90 hover:border-purple-300 bg-white hover:bg-purple-50/20 transition-all flex items-center justify-between gap-3 shadow-2xs group">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center shrink-0 text-teal-700 shadow-2xs">
+              <span class="material-symbols-outlined text-[24px]">texture</span>
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-headline text-xs font-bold text-slate-900 group-hover:text-purple-900 transition-colors truncate">Sanganeri Handblock Mulmul Dohar</h4>
+              <p class="text-[11px] text-slate-500">100% Breathable cotton • Natural vegetable dyes</p>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-bold text-xs text-purple-900">₹1,125</span>
+                <span class="text-[10px] text-slate-400 line-through">₹1,250</span>
+                <span class="text-[9px] font-extrabold text-emerald-700 bg-emerald-50 px-1 rounded">10% PASS OFF</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="orderShopItem('Sanganeri Mulmul Dohar', '₹1,125')" class="px-2.5 py-1.5 rounded-xl bg-purple-100 text-purple-800 hover:bg-purple-200 text-[11px] font-bold transition-all active:scale-95 shrink-0">
+            Order
+          </button>
+        </div>
+
+        <!-- Product 4: Lac Bangles & Kundan -->
+        <div data-shop-category="crafts" class="p-3 rounded-2xl border border-slate-200/90 hover:border-purple-300 bg-white hover:bg-purple-50/20 transition-all flex items-center justify-between gap-3 shadow-2xs group">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-rose-100 flex items-center justify-center shrink-0 text-rose-700 shadow-2xs">
+              <span class="material-symbols-outlined text-[24px]">diamond</span>
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-headline text-xs font-bold text-slate-900 group-hover:text-purple-900 transition-colors truncate">Johari Bazaar Lac Bangles Set</h4>
+              <p class="text-[11px] text-slate-500">4th-gen artisans • Hand-embedded brass Kundan</p>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-bold text-xs text-purple-900">₹801</span>
+                <span class="text-[10px] text-slate-400 line-through">₹890</span>
+                <span class="text-[9px] font-extrabold text-emerald-700 bg-emerald-50 px-1 rounded">10% PASS OFF</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="orderShopItem('Johari Lac Bangles Set', '₹801')" class="px-2.5 py-1.5 rounded-xl bg-purple-100 text-purple-800 hover:bg-purple-200 text-[11px] font-bold transition-all active:scale-95 shrink-0">
+            Order
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Hotel Room Delivery Guarantee -->
+      <div class="p-3 rounded-2xl bg-purple-50/70 border border-purple-200/60 flex items-center gap-2.5 text-xs">
+        <span class="material-symbols-outlined text-[20px] text-purple-700 shrink-0">local_shipping</span>
+        <div>
+          <p class="font-bold text-purple-950">Hotel Room Delivery Available</p>
+          <p class="text-[11px] text-purple-700">Delivered directly to your hotel desk within 90 minutes in Jaipur.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 10. CURATED ACTIVITIES MODAL                                            -->
+  <!-- ======================================================================= -->
+  <div id="activities-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity" onclick="if(event.target===this)closeActivitiesModal()">
+    <div class="w-full max-w-[480px] bg-white rounded-t-3xl sm:rounded-3xl p-5 space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl animate-in slide-in-from-bottom duration-300">
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-teal-700 text-[18px]">local_activity</span>
+            <h3 class="font-headline text-base font-extrabold text-slate-900">Jaipur Activities &amp; Safaris</h3>
+          </div>
+          <p class="text-xs text-teal-700 font-semibold mt-0.5">Top-rated excursions with Trrip Pass Perks</p>
+        </div>
+        <button onclick="closeActivitiesModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <!-- Activities List -->
+      <div class="space-y-3">
+        <!-- 1. Leopard Safari -->
+        <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-teal-300 transition-all flex items-center justify-between gap-3 shadow-2xs">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center shrink-0 text-teal-800">
+              <span class="material-symbols-outlined text-[24px]">forest</span>
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-headline text-xs font-bold text-slate-900 truncate">Jhalana Leopard Safari</h4>
+              <p class="text-[11px] text-slate-500">4x4 Open Gypsy • 2.5 Hr Guided Wildlife Track</p>
+              <span class="font-bold text-xs text-teal-800">₹1,450 / pass</span>
+            </div>
+          </div>
+          <button type="button" onclick="bookActivityItem('Jhalana Leopard Safari', '₹1,450')" class="px-3 py-1.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold transition-all active:scale-95 shrink-0">
+            Book
+          </button>
+        </div>
+
+        <!-- 2. Achrol ATV -->
+        <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-teal-300 transition-all flex items-center justify-between gap-3 shadow-2xs">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center shrink-0 text-amber-800">
+              <span class="material-symbols-outlined text-[24px]">two_wheeler</span>
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-headline text-xs font-bold text-slate-900 truncate">Achrol Sand Dunes ATV Trail</h4>
+              <p class="text-[11px] text-slate-500">200cc Quad Sports Bike • Rugged Canyon Trail</p>
+              <span class="font-bold text-xs text-teal-800">₹999 / slot</span>
+            </div>
+          </div>
+          <button type="button" onclick="bookActivityItem('Achrol ATV Trail', '₹999')" class="px-3 py-1.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold transition-all active:scale-95 shrink-0">
+            Book
+          </button>
+        </div>
+
+        <!-- 3. Nahargarh Cycle Tour -->
+        <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-teal-300 transition-all flex items-center justify-between gap-3 shadow-2xs">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0 text-emerald-800">
+              <span class="material-symbols-outlined text-[24px]">directions_bike</span>
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-headline text-xs font-bold text-slate-900 truncate">Nahargarh Sunrise Cycling</h4>
+              <p class="text-[11px] text-slate-500">Hilltop sunrise views + Traditional morning tea</p>
+              <span class="font-bold text-xs text-teal-800">₹650 / rider</span>
+            </div>
+          </div>
+          <button type="button" onclick="bookActivityItem('Nahargarh Sunrise Cycling', '₹650')" class="px-3 py-1.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold transition-all active:scale-95 shrink-0">
+            Book
           </button>
         </div>
       </div>

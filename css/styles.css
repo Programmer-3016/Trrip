@@ -1,0 +1,86 @@
+/* Trrip Traveller App - Core Modular Stylesheet */
+
+:root {
+  --primary: #00685f;
+  --primary-dark: #005049;
+  --primary-light: #008378;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --on-surface: #0f172a;
+}
+
+/* Material Symbols Setup */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Typography & Display Settings */
+body {
+  min-height: 100dvh;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  background-color: #f1f5f9;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Frosted Glass UI effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Modal and Transitions Smoothness */
+.modal-backdrop-blur {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Active states & Micro-interactions */
+.interactive-tap:active {
+  transform: scale(0.97);
+}
+
+/* Voucher Ticket Notches styling helper */
+.ticket-notch-top {
+  position: absolute;
+  top: -10px;
+  right: 108px;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid rgba(233, 213, 255, 0.8);
+  z-index: 20;
+}
+
+.ticket-notch-bottom {
+  position: absolute;
+  bottom: -10px;
+  right: 108px;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid rgba(233, 213, 255, 0.8);
+  z-index: 20;
+}

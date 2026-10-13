@@ -778,9 +778,9 @@
       </footer>
     </div>
 
-    <!-- 5. Fixed Scroll-Aware Bottom Navigation Bar (Elevated Designer Dock) -->
-    <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 w-full z-50 bg-white/95 backdrop-blur-2xl border-t border-slate-200/90 shadow-[0_-8px_32px_rgba(15,23,42,0.08)] max-w-[420px] mx-auto transition-transform duration-300 ease-in-out lg:hidden">
-      <div class="grid grid-cols-4 items-center px-2 py-2">
+    <!-- 5. Fixed Scroll-Aware Bottom Navigation Bar (Curved Designer Dock) -->
+    <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 w-full z-50 bg-white/95 backdrop-blur-2xl rounded-t-[28px] border-t border-x border-slate-200/90 shadow-[0_-10px_35px_rgba(15,23,42,0.09)] max-w-[420px] mx-auto transition-transform duration-300 ease-in-out lg:hidden">
+      <div class="grid grid-cols-4 items-center px-2 pt-2.5 pb-2">
         <!-- 1. Home -->
         <button onclick="showDiscovery()" aria-label="Home" class="flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-800 transition-all active:scale-90 group focus:outline-none">
           <span class="material-symbols-outlined text-[22px] group-hover:scale-110 group-hover:text-primary transition-all">explore</span>
@@ -801,9 +801,12 @@
           <span class="text-[10px] font-semibold tracking-tight text-slate-500 group-hover:text-slate-900 transition-colors mt-0.5">Activities</span>
         </button>
 
-        <!-- 4. Shop (4th option, Non-interactive) -->
-        <button onclick="feedback('Trrip Curated Shop coming soon')" aria-label="Shop" class="flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-800 transition-all active:scale-90 group focus:outline-none">
-          <span class="material-symbols-outlined text-[22px] group-hover:scale-110 group-hover:text-primary transition-all">storefront</span>
+        <!-- 4. Shop (4th option, Non-interactive with NEW badge) -->
+        <button onclick="feedback('Trrip Curated Shop coming soon')" aria-label="Shop" class="relative flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-800 transition-all active:scale-90 group focus:outline-none">
+          <div class="relative flex items-center justify-center">
+            <span class="material-symbols-outlined text-[22px] group-hover:scale-110 group-hover:text-primary transition-all">storefront</span>
+            <span class="absolute -top-1.5 -right-3 px-1.5 py-0.2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[8px] font-black uppercase tracking-wider shadow-2xs leading-tight">New</span>
+          </div>
           <span class="text-[10px] font-semibold tracking-tight text-slate-500 group-hover:text-slate-900 transition-colors mt-0.5">Shop</span>
         </button>
       </div>

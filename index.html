@@ -93,32 +93,32 @@
   <div class="w-full max-w-[420px] min-h-screen bg-background relative flex flex-col pb-24 shadow-2xl lg:max-w-none lg:pb-0 lg:shadow-none transition-all duration-300">
 
     <!-- 1. Sticky Header -->
-    <header class="top-0 sticky z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <header class="top-0 sticky z-40 bg-[#f7f9ff]/95 backdrop-blur-md border-b border-[#e1bfb5]/30">
       <div class="px-4 py-2.5 max-w-md mx-auto lg:max-w-6xl lg:px-8">
         <!-- Top Bar Location & Actions -->
         <div class="flex justify-between items-center">
           <!-- Leading: Location Title & Dropdown -->
           <div onclick="openLocationModal()" class="flex items-center space-x-2 active:scale-[0.98] transition-transform duration-150 cursor-pointer text-left">
-            <div class="w-8 h-8 rounded-full bg-teal-50 border border-teal-200/60 flex items-center justify-center text-primary shrink-0">
+            <div class="w-8 h-8 rounded-full bg-[#ffdbd0] flex items-center justify-center text-[#a83301] shrink-0">
               <span class="material-symbols-outlined text-[18px]">location_on</span>
             </div>
             <div>
               <div class="flex items-center space-x-1">
-                <span id="top-bar-city" class="text-[16px] font-bold text-slate-900 leading-tight">Jaipur</span>
-                <span class="material-symbols-outlined text-primary text-[18px]">keyboard_arrow_down</span>
+                <span id="top-bar-city" class="text-[16px] font-bold text-[#181c20] leading-tight">Jaipur</span>
+                <span class="material-symbols-outlined text-[#a83301] text-[18px]">keyboard_arrow_down</span>
               </div>
-              <p id="top-bar-subtitle" class="text-[11px] text-slate-500 leading-none mt-0.5">
+              <p id="top-bar-subtitle" class="text-[11px] text-[#59413a] leading-none mt-0.5">
                 Near Albert Hall Museum
               </p>
             </div>
           </div>
           <!-- Trailing Action Icons -->
           <div class="flex items-center space-x-2">
-            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-95 focus:outline-none">
+            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative w-8 h-8 rounded-full bg-[#ebeef3] flex items-center justify-center text-[#181c20] hover:bg-[#e5e8ee] transition-colors active:scale-95 focus:outline-none">
               <span class="material-symbols-outlined text-[18px]">notifications</span>
-              <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-primary"></span>
+              <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#a83301]"></span>
             </button>
-            <button id="btn-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer-panel" onclick="openNavDrawer()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 hover:text-slate-900 transition-colors active:scale-95 focus:outline-none">
+            <button id="btn-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer-panel" onclick="openNavDrawer()" class="w-8 h-8 rounded-full bg-[#ebeef3] flex items-center justify-center text-[#181c20] hover:bg-[#e5e8ee] transition-colors active:scale-95 focus:outline-none">
               <span class="material-symbols-outlined text-[20px]">menu</span>
             </button>
           </div>

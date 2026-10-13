@@ -87,13 +87,7 @@
 </head>
 <body class="bg-slate-100 text-on-surface antialiased font-body flex justify-center min-h-screen">
 
-  <!-- FLOATING CASE STUDY PILL (For Evaluator Review) -->
-  <aside aria-label="UX Audit & Submission Details">
-    <button id="btn-open-audit" class="fixed top-3 right-3 z-50 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 text-white backdrop-blur-md text-xs font-semibold shadow-lg hover:bg-black transition-all hover:scale-105 active:scale-95 border border-white/20">
-      <span class="material-symbols-outlined text-[16px] text-teal-300">assignment</span>
-      <span>UX Audit &amp; Case Study</span>
-    </button>
-  </aside>
+
 
   <!-- Responsive Application Canvas -->
   <div class="w-full max-w-[420px] min-h-screen bg-background relative flex flex-col pb-24 shadow-2xl lg:max-w-none lg:pb-0 lg:shadow-none transition-all duration-300">
@@ -1281,9 +1275,12 @@
     }
 
     // Audit Modal
-    document.getElementById('btn-open-audit').addEventListener('click', () => {
-      document.getElementById('audit-modal').classList.remove('hidden');
-    });
+    const btnAudit = document.getElementById('btn-open-audit');
+    if (btnAudit) {
+      btnAudit.addEventListener('click', () => {
+        document.getElementById('audit-modal').classList.remove('hidden');
+      });
+    }
     function closeAuditModal() {
       document.getElementById('audit-modal').classList.add('hidden');
     }

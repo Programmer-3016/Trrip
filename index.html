@@ -92,50 +92,50 @@
   <!-- Responsive Application Canvas -->
   <div class="w-full max-w-[420px] min-h-screen bg-background relative flex flex-col pb-24 shadow-2xl lg:max-w-none lg:pb-0 lg:shadow-none transition-all duration-300">
 
-    <!-- 1. Top Header & Search Block -->
+    <!-- 1. Top Header & Search Block (Elevated Modern Design) -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md transition-all duration-200 border-b border-slate-200/80 shadow-xs">
-      <div class="px-4 pt-3 pb-2.5 space-y-2.5 max-w-md mx-auto lg:max-w-6xl lg:flex lg:items-center lg:gap-6 lg:px-8 lg:py-4 lg:space-y-0">
+      <div class="px-4 pt-3 pb-2.5 space-y-2.5 max-w-md mx-auto lg:max-w-6xl lg:flex lg:items-center lg:gap-6 lg:px-8 lg:py-3.5 lg:space-y-0">
         <!-- Desktop Brand -->
-        <a href="#" onclick="showDiscovery(); return false;" class="hidden lg:flex lg:order-1 lg:items-center lg:gap-2.5 lg:shrink-0" aria-label="Trrip home">
-          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-teal-500 text-white shadow-sm">
+        <a href="#" onclick="showDiscovery(); return false;" class="hidden lg:flex lg:order-1 lg:items-center lg:gap-2.5 lg:shrink-0 group/brand" aria-label="Trrip home">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-teal-500 text-white shadow-sm group-hover/brand:scale-105 transition-transform">
             <span class="material-symbols-outlined text-[21px]">explore</span>
           </span>
           <span class="font-headline text-[21px] font-extrabold tracking-tight text-on-surface">Trrip</span>
         </a>
         
         <!-- Top Row: Location & Actions -->
-        <div class="flex justify-between items-center w-full lg:order-3 lg:w-auto lg:shrink-0 lg:gap-5">
+        <div class="flex justify-between items-center w-full lg:order-3 lg:w-auto lg:shrink-0 lg:gap-4">
           <!-- Modern Location Selector Pill -->
-          <button id="location-selector" onclick="openLocationModal()" class="flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-slate-50/90 hover:bg-slate-100 border border-slate-200/90 shadow-2xs transition-all duration-200 active:scale-95 group focus:outline-none">
+          <button id="location-selector" onclick="openLocationModal()" class="flex items-center gap-2 py-1.5 px-3 rounded-full bg-white hover:bg-slate-50 border border-slate-200/90 shadow-[0_1px_3px_rgba(15,23,42,0.04)] hover:border-slate-300 transition-all duration-200 active:scale-95 group focus:outline-none">
             <div class="w-6 h-6 rounded-full bg-teal-50 border border-teal-200/60 flex items-center justify-center text-primary group-hover:scale-105 transition-transform shrink-0">
-              <span class="material-symbols-outlined text-[15px]">location_on</span>
+              <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
             </div>
             <div class="flex items-center gap-1">
               <span id="top-bar-city" class="font-headline text-[13px] font-bold text-slate-900 tracking-tight group-hover:text-primary transition-colors">Jaipur</span>
-              <span class="material-symbols-outlined text-slate-400 text-[16px] transition-transform group-hover:translate-y-0.5">keyboard_arrow_down</span>
+              <span class="material-symbols-outlined text-slate-400 text-[16px] transition-transform group-hover:translate-y-0.5 group-hover:text-primary">keyboard_arrow_down</span>
             </div>
           </button>
 
           <!-- Notification & User Avatar -->
           <div class="flex items-center space-x-2">
-            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative p-1.5 rounded-full hover:bg-slate-100 transition-colors text-slate-600 active:scale-95">
-              <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <button aria-label="Notifications" onclick="feedback('No new notifications')" class="relative w-8 h-8 rounded-full flex items-center justify-center bg-white hover:bg-slate-50 border border-slate-200/80 shadow-[0_1px_3px_rgba(15,23,42,0.04)] text-slate-600 hover:text-slate-900 active:scale-95 transition-all focus:outline-none">
+              <span class="material-symbols-outlined text-[19px]">notifications</span>
               <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
             </button>
-            <button aria-label="User Profile" onclick="feedback('Traveller Profile: Booking ID wi83n')" class="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200 focus:outline-none ring-2 ring-primary/20 active:scale-95 transition-transform">
+            <button aria-label="User Profile" onclick="feedback('Traveller Profile: Booking ID wi83n')" class="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200/90 focus:outline-none ring-2 ring-slate-100 hover:ring-primary/40 active:scale-95 transition-all shadow-[0_1px_3px_rgba(15,23,42,0.04)]">
               <img class="w-full h-full object-cover" alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uL3g47A0q8U2oJBDtwHH5WQkMKD-fo7AawuW8kHwTlfSi2o4RZkcWAwE5925Ouz-C4op8RmUD6YYZryKPRSyPKotjO5CHniA_9tm0MSkYtMN3BoCtNaoXEQRvHEM6zdWQjzTrCa--IeQJk4JqTY2WRN7HQFj9t9kiNCdRPYTz3bnzya9FRt7hA3IvFJVKYyLVaWYqJRNK4Oz-poOIEF1vI35FV3cP--tX_V2zGJUW7g3y36dXhxS">
             </button>
           </div>
         </div>
 
-        <!-- Integrated Search Bar -->
-        <div class="relative flex items-center w-full bg-slate-50/80 hover:bg-white focus-within:bg-white rounded-xl border border-slate-200 shadow-xs focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10 lg:order-2 lg:flex-1 transition-all">
-          <div class="pl-3.5 pr-2 flex items-center pointer-events-none text-slate-400">
-            <span class="material-symbols-outlined text-[19px]">search</span>
+        <!-- Integrated Elevated Search Bar -->
+        <div class="relative flex items-center w-full bg-white rounded-2xl border border-slate-200/90 shadow-[0_2px_8px_-2px_rgba(15,23,42,0.05)] hover:border-slate-300 hover:shadow-[0_4px_14px_-2px_rgba(15,23,42,0.08)] focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 lg:order-2 lg:flex-1 transition-all duration-200 group/search">
+          <div class="pl-3.5 pr-2 flex items-center pointer-events-none text-slate-400 group-focus-within/search:text-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">search</span>
           </div>
-          <input id="search-input" class="w-full py-2.5 pr-9 bg-transparent text-slate-800 placeholder:text-slate-400 text-xs sm:text-sm font-medium border-0 focus:ring-0 focus:outline-none" placeholder="Search restaurants, cuisines, or dishes..." type="text">
-          <button aria-label="Adjust filters" onclick="feedback('Filters active: Open Now, C-Scheme')" class="absolute right-2.5 p-1 text-slate-400 hover:text-primary transition-colors active:scale-95">
-            <span class="material-symbols-outlined text-[18px]">tune</span>
+          <input id="search-input" class="w-full py-2.5 sm:py-3 pr-11 bg-transparent text-slate-900 placeholder:text-slate-400 text-xs sm:text-[13.5px] font-medium border-0 focus:ring-0 focus:outline-none tracking-tight" placeholder="Search restaurants, cuisines, or dishes..." type="text">
+          <button aria-label="Adjust filters" onclick="feedback('Filters active: Open Now, C-Scheme')" class="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-slate-100/90 hover:bg-teal-50 border border-slate-200/70 hover:border-teal-200 text-slate-500 hover:text-primary transition-all flex items-center justify-center active:scale-95 group/filter shadow-2xs">
+            <span class="material-symbols-outlined text-[17px] transition-transform group-hover/filter:rotate-90 duration-200">tune</span>
           </button>
         </div>
       </div>
@@ -147,30 +147,30 @@
     <main id="view-discovery" class="flex-1 flex flex-col space-y-3.5 lg:w-full lg:max-w-6xl lg:mx-auto lg:space-y-6 lg:pb-8">
 
       <!-- 2. Quick Filter Chips -->
-      <section class="w-full overflow-hidden pt-1">
-        <div class="flex items-center space-x-1.5 px-4 overflow-x-auto no-scrollbar py-0.5 lg:flex-wrap lg:gap-2 lg:space-x-0 lg:px-8 lg:overflow-visible">
+      <section class="w-full overflow-hidden pt-1 pb-0.5">
+        <div class="flex items-center space-x-2 px-4 overflow-x-auto no-scrollbar py-0.5 lg:flex-wrap lg:gap-2 lg:space-x-0 lg:px-8 lg:overflow-visible">
           <!-- Filter: Veg Only -->
-          <button data-filter="veg" data-filter-chip class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-xs">
+          <button data-filter="veg" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
             <span class="material-symbols-outlined text-[16px] text-emerald-600">eco</span>
             <span>Veg Only</span>
           </button>
           <!-- Filter: Open Now (Active) -->
-          <button data-filter="open" data-filter-chip class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-teal-50 border border-teal-600/30 text-primary text-xs whitespace-nowrap active:scale-95 transition-all font-bold shadow-xs">
+          <button data-filter="open" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-600/30 text-primary text-xs whitespace-nowrap active:scale-95 transition-all font-bold shadow-2xs">
             <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">schedule</span>
             <span>Open Now</span>
           </button>
           <!-- Filter: Top Rated -->
-          <button data-filter="top" data-filter-chip class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-xs">
+          <button data-filter="top" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
             <span class="material-symbols-outlined text-[16px] text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
             <span>Top Rated</span>
           </button>
           <!-- Filter: Near Me -->
-          <button data-filter="near" data-filter-chip class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-xs">
+          <button data-filter="near" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
             <span class="material-symbols-outlined text-[16px] text-slate-400">near_me</span>
             <span>Near Me</span>
           </button>
           <!-- Filter: Discounts & Offers -->
-          <button data-filter="discount" data-filter-chip class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-xs">
+          <button data-filter="discount" data-filter-chip class="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold whitespace-nowrap active:scale-95 transition-all shadow-2xs hover:shadow-xs">
             <span class="material-symbols-outlined text-[16px] text-primary">sell</span>
             <span>Discounts &amp; Offers</span>
           </button>

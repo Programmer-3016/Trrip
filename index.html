@@ -963,18 +963,18 @@
         </button>
       </div>
 
-      <!-- Native "Use Current Location" Row (Real Production App Pattern) -->
-      <button onclick="setExactLocation('C-Scheme, Jaipur')" class="w-full p-3 rounded-2xl bg-slate-50 hover:bg-teal-50/60 border border-slate-200/90 hover:border-teal-200 flex items-center justify-between text-left transition-all active:scale-[0.99] group shadow-2xs">
+      <!-- Native "Use Current Location" Row (Triggers Phone/Browser GPS Permission) -->
+      <button id="btn-use-current-location" onclick="requestCurrentLocation()" class="w-full p-3 rounded-2xl bg-slate-50 hover:bg-teal-50/60 border border-slate-200/90 hover:border-teal-200 flex items-center justify-between text-left transition-all active:scale-[0.99] group shadow-2xs">
         <div class="flex items-center gap-3 min-w-0">
           <div class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200/60 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">my_location</span>
+            <span id="current-location-icon" class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">my_location</span>
           </div>
           <div class="min-w-0">
             <div class="flex items-center gap-1.5">
-              <span class="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-primary transition-colors">Use Current Location</span>
+              <span id="current-location-text" class="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-primary transition-colors">Use Current Location</span>
               <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">GPS</span>
             </div>
-            <p class="text-[11px] text-slate-500 truncate mt-0.5">C-Scheme, Ashok Nagar, Jaipur 302001</p>
+            <p id="current-location-sub" class="text-[11px] text-slate-500 truncate mt-0.5">C-Scheme, Ashok Nagar, Jaipur 302001</p>
           </div>
         </div>
         <span class="material-symbols-outlined text-slate-300 text-[18px] group-hover:text-primary transition-colors shrink-0">chevron_right</span>
@@ -1511,6 +1511,61 @@
 
     function closeLocationModal() {
       document.getElementById('location-modal').classList.add('hidden');
+    }
+
+    // Trigger Phone / Browser Live Location Permission
+    function requestCurrentLocation() {
+      const locIcon = document.getElementById('current-location-icon');
+      const locText = document.getElementById('current-location-text');
+      const locSub = document.getElementById('current-location-sub');
+
+      if (!navigator.geolocation) {
+        feedback('GPS geolocation is not supported on this device');
+        setExactLocation('C-Scheme, Jaipur');
+        return;
+      }
+
+      // Visual feedback that the phone is actively requesting location
+      if (locIcon) locIcon.classList.add('animate-spin');
+      if (locText) locText.textContent = 'Requesting GPS access...';
+      if (locSub) locSub.textContent = 'Please tap "Allow" on your phone prompt';
+      feedback('Phone GPS permission requested...');
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          if (locIcon) locIcon.classList.remove('animate-spin');
+          if (locText) locText.textContent = 'Use Current Location';
+          if (locSub) locSub.textContent = 'C-Scheme, Ashok Nagar, Jaipur 302001';
+
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          // Set location and show live GPS accuracy in top bar
+          setExactLocation('C-Scheme, Jaipur');
+          const subEl = document.getElementById('top-bar-subtitle');
+          if (subEl) {
+            subEl.textContent = `Live GPS (${lat.toFixed(3)}°N, ${lng.toFixed(3)}°E)`;
+          }
+          feedback(`Live GPS Location accessed (${lat.toFixed(2)}, ${lng.toFixed(2)})`);
+        },
+        (error) => {
+          if (locIcon) locIcon.classList.remove('animate-spin');
+          if (locText) locText.textContent = 'Use Current Location';
+          if (locSub) locSub.textContent = 'C-Scheme, Ashok Nagar, Jaipur 302001';
+
+          if (error.code === error.PERMISSION_DENIED) {
+            feedback('Location permission denied. Defaulted to Jaipur');
+          } else {
+            feedback('GPS signal weak. Defaulted to Jaipur');
+          }
+          setExactLocation('C-Scheme, Jaipur');
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
     }
 
     function setExactLocation(loc) {
